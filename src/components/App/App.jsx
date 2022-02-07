@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import Invite from '../Invite/Invite';
 
 import './App.css';
 
@@ -68,6 +69,13 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/invite"
+          >
+            <Invite />
+          </ProtectedRoute>
+
           <Route
             exact
             path="/login"
@@ -94,6 +102,18 @@ function App() {
               // Otherwise, show the registration page
               <RegisterPage />
             }
+          </Route>
+
+          <Route
+            exact
+            path="/invite"
+          >
+            {user.id ?
+            
+            <Redirect to="/invite" />
+            :
+            <RegisterPage />
+          }
           </Route>
 
           <Route

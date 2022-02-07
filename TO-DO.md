@@ -1,3 +1,8 @@
+KEY:
+    [π] === complete
+    [~] === possibly complete need to go back and look at it again
+
+
 Database [π]
     [π] users
         [π] id SERIAL KEY
