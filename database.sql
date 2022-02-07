@@ -19,11 +19,11 @@ CREATE TABLE "users" (
 	"id" SERIAL PRIMARY KEY,
 	"username" VARCHAR(255) UNIQUE NOT NULL,
 	"password" VARCHAR(255) NOT NULL,
-	"firstName" VARCHAR(255) NOT NULL,
-	"lastName" VARCHAR(255) NOT NULL,
-	"authLevel" VARCHAR(255) DEFAULT 'ADMIN',
-	"familyId" INT,
-	FOREIGN KEY ("familyId") REFERENCES "family" ("id")
+	"first_name" VARCHAR(255) NOT NULL,
+	"last_name" VARCHAR(255) NOT NULL,
+	"auth_level" VARCHAR(255) DEFAULT 'ADMIN',
+	"family_id" INT,
+	FOREIGN KEY ("family_id") REFERENCES "family" ("id")
 );
 
 CREATE TABLE "child" (

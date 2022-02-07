@@ -19,6 +19,7 @@ function RegisterForm() {
         password: password,
         firstName: firstName,
         lastName: lastName,
+        authLevel: 'Parent',
       },
     });
   }; // end registerUser

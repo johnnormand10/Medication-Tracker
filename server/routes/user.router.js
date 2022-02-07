@@ -12,6 +12,8 @@ const router = express.Router();
 router.get('/', rejectUnauthenticated, (req, res) => {
   // Send back user object from the session (previously queried from the database)
   res.send(req.user);
+  console.log('user in user.router', req.user);
+  
 });
 
 // Handles POST request with new user data
@@ -22,11 +24,15 @@ router.post('/register', (req, res, next) => {
   const password = encryptLib.encryptPassword(req.body.password);
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
+  const authLevel = req.body.authLevel;
+  
+  console.log('authLevel', authLevel);
+  
 
-  const queryText = `INSERT INTO "users" (username, password, first_name, last_name)
-    VALUES ($1, $2, $3, $4) RETURNING "id"`;
+  const queryText = `INSERT INTO "users" (username, password, first_name, last_name, auth_level)
+    VALUES ($1, $2, $3, $4, $5) RETURNING "id"`;
   pool
-    .query(queryText, [username, password, firstName, lastName])
+    .query(queryText, [username, password, firstName, lastName, authLevel])
     .then(() => res.sendStatus(201))
     .catch((err) => {
       console.log('User registration failed: ', err);

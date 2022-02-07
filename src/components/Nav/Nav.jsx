@@ -28,9 +28,11 @@ function Nav() {
               Home
             </Link>
 
-            <Link className="navLink" to="/info">
-              Info Page
+            <Link className="navLink" to="/invite">
+              Invite Page
             </Link>
+
+            
 
             <LogOutButton className="navLink" />
           </>
