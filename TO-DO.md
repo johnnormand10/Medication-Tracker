@@ -24,6 +24,7 @@ Database [π]
         [π] name
 
 Components [ ]
+    [ ] About
     [ ] Login
     [ ] Register
     [ ] Invite
