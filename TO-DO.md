@@ -1,25 +1,27 @@
-Database [ ]
-    [ ] users
-        [ ] id SERIAL KEY
-        [ ] username
-        [ ] password
-        [ ] firstName
-        [ ] lastName
-        [ ] authLevel
-    [ ] child
-        [ ] id SERIAL KEY
-        [ ] firstName
-        [ ] parentId
-    [ ] childMedicationJoiner
-        [ ] id SERIAL KEY 
-        [ ] childId
-        [ ] medicationId
-        [ ] comments
-        [ ] dosage
-        [ ] howOften
-    [ ] medication
-        [ ] id SERIAL KEY
-        [ ] name
+Database [π]
+    [π] users
+        [π] id SERIAL KEY
+        [π] username
+        [π] password
+        [π] firstName
+        [π] lastName
+        [π] authLevel
+    [π] child
+        [π] id SERIAL KEY
+        [π] firstName
+        [π] parentId
+    [π] family
+        [π] id
+    [π] childMedicationJoiner
+        [π] id SERIAL KEY 
+        [π] childId
+        [π] medicationId
+        [π] comments
+        [π] dosage
+        [π] howOften
+    [π] medication
+        [π] id SERIAL KEY
+        [π] name
 
 Components [ ]
     [ ] Login
