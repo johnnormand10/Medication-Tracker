@@ -24,9 +24,9 @@ Database [π]
         [π] name
 
 Components [ ]
-    [ ] About
-    [ ] Login
-    [ ] Register
+    [~] About
+    [π] Login [ ] different styling
+    [π] Register
     [ ] Invite
     [ ] Parent Child Input
     [ ] Manage Child
