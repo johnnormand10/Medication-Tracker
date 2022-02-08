@@ -41,13 +41,14 @@ Components [ ]
         [π] last name input
         [π] password input
         [π] helper checkbox
-    [ ] Parent Child Input
-        [ ] Child name input 
-        [ ] Medication input 
-        [ ] Comments input 
-        [ ] Dosage input 
-        [ ] How often input 
+    [π] Parent Child Input
+        [π] Child name input 
+        [π] Medication input 
+        [π] Comments input 
+        [π] Dosage input 
+        [π] How often input 
     [ ] Parent Child Medication Table
+        [ ] Dropdown with child names
         [ ] Headers and rows
         [ ] input data from database using GET
     [ ] Parent Table Edit

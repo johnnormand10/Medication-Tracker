@@ -11,6 +11,7 @@ const passport = require('./strategies/user.strategy');
 const userRouter = require('./routes/user.router');
 const childRouter = require('./routes/childMedication.router');
 const inviteRouter = require('./routes/invite.router');
+const nameRouter = require('./routes/names.router');
 
 
 // Body parser middleware
@@ -28,6 +29,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/user/medication', childRouter);
 app.use('/api/user/invite', inviteRouter);
+app.use('/api/user/names', nameRouter);
 
 
 // Serve static files

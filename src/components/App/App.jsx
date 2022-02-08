@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Invite from '../Invite/Invite';
 import ChildMedication from '../ChildInput/ChildInput';
 
+
 import './App.css';
 
 function App() {
@@ -34,6 +35,8 @@ function App() {
   }, [dispatch]);
 
   return (
+
+
     <Router>
       <div>
         <Nav />
