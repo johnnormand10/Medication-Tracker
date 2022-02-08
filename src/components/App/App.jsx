@@ -70,12 +70,23 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             exact
             path="/api/user/invite"
           >
             <Invite />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
+
+          <Route
+            exact
+            path="/api/user/invite"
+          >
+            {user.auth_level === 'Helper' ?
+              <Redirect to="/api/user/invite" />
+              :
+              <Invite />
+            }
+          </Route> 
 
           {/* <Route
             exact
@@ -93,10 +104,10 @@ function App() {
 
           <Route
             exact
-            path="/user/child"
+            path="/api/user/medication"
           >
             {user.auth_level === 'Helper' ?
-              <Redirect to="/user/child" />
+              <Redirect to="/api/user/medication" />
               :
               <ChildMedication />
             }

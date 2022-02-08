@@ -99,7 +99,7 @@ function Invite(){
             <div>
                 <input
                     type="checkbox"
-                    class="checkbox"
+                    className="checkbox"
                     name="Helper"
                     id="helper"
                     value='Helper'
