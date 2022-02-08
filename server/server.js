@@ -12,6 +12,7 @@ const userRouter = require('./routes/user.router');
 const childRouter = require('./routes/childMedication.router');
 const inviteRouter = require('./routes/invite.router');
 
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,8 +26,9 @@ app.use(passport.session());
 
 /* Routes */
 app.use('/api/user', userRouter);
-app.use('/api/user/child', childRouter);
+app.use('/api/user/medication', childRouter);
 app.use('/api/user/invite', inviteRouter);
+
 
 // Serve static files
 app.use(express.static('build'));

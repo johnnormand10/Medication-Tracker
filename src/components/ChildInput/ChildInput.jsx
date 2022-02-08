@@ -8,6 +8,8 @@ function ChildInput() {
     const [medication, setMedication] = useState('');
     const [howOften, setHowOften] = useState('');
 
+    const dispatch = useDispatch();
+
     const submitChild = (event) => {
         event.preventDefault();
 
@@ -21,6 +23,12 @@ function ChildInput() {
                 howOften: howOften,
             }
         });
+
+        setChildName('');
+        setComment('');
+        setDosage('');
+        setMedication('');
+        setHowOften('');
     };
 
 

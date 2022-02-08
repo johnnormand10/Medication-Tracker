@@ -29,7 +29,7 @@ function Nav() {
               Home
             </Link>
 
-            <Link className="navLink" to="/user/child">
+            <Link className="navLink" to="/api/user/medication">
               Child/Medication
             </Link>
 
