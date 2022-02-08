@@ -11,6 +11,9 @@ router.get('/', rejectUnauthenticated, (req, res) => {
     console.log('user in childMedication.router is:', req.user);
 });
 
+
+
+
 // Handles POST request with new user data
 router.post('/', (req, res) => {
     const childName = req.body.childName;

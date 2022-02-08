@@ -8,16 +8,15 @@ function* setChildMedication(action){
         console.log('in childMedicationSaga');
         console.log('action.payload in childMedicationSaga is:', action.payload);
         
-
         yield axios.post('/api/user/medication', action.payload);
 
-
-        yield put({ type: 'SET_CHILD_MEDICATION', payload: response.payload })
+        yield put({ type: 'CHILD_NAME'})
     }
     catch (error) {
         console.error('ERROR in posting child and medication data');
     }
 }
+
 
 function* childMedicationSaga() {
     yield takeEvery('CHILD_MEDICATION', setChildMedication);
