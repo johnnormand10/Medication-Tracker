@@ -13,18 +13,32 @@ function Invite(){
 
     const inviteUser = (event) => {
         event.preventDefault();
+        console.log('submit btn pressed');
 
         dispatch({
-            type: 'REGISTER',
+            type: 'INVITE',
             payload: {
                 username: inviteUsername,
                 password: invitePassword,
                 firstName: inviteFirst,
                 lastName: inviteLast,
                 authLevel: parentHelper,
-            },
+            }
         });
+
+        setUsername('');
+        setPassword('');
+        setFirstName('');
+        setLastName('');
+        setParentHelper('');
     }; //end inviteUser
+
+    function unCheck() {
+        let x = document.getElementsByClassName("checkbox");
+        for(i=0; i<x.length; i++){
+            x[i].checked = false;
+        }
+    }
 
     return(
         <form className="formPanel" onSubmit={inviteUser}>
@@ -85,16 +99,7 @@ function Invite(){
             <div>
                 <input
                     type="checkbox"
-                    name="Parent"
-                    id="parent"
-                    value='Parent'
-                    onChange={(event) => setParentHelper(event.target.value)}
-                />
-                <label htmlFor="parent">Parent</label>  
-            </div>
-            <div>
-                <input
-                    type="checkbox"
+                    class="checkbox"
                     name="Helper"
                     id="helper"
                     value='Helper'
@@ -103,7 +108,7 @@ function Invite(){
                 <label htmlFor="helper">Helper</label>
             </div>
             <div>
-                <input className="btn" type="submit" name="submit" value="Submit" />
+                <input className="btn" type="submit" name="submit" value="Submit"  onClick={unCheck}/>
                 <p> Give your Helper the username and password to login!</p>
             </div>
         </form>
