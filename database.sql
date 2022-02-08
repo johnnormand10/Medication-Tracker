@@ -6,40 +6,31 @@
 
 -- Create database named medication_tracker
 -- Then run these queries to get the correct tables
-CREATE TABLE "family" (
-	"id" SERIAL PRIMARY KEY
-);
-
-CREATE TABLE "medication" (
-	"id" SERIAL PRIMARY KEY,
-	"name" VARCHAR(2000) NOT NULL
-);
-
 CREATE TABLE "users" (
 	"id" SERIAL PRIMARY KEY,
 	"username" VARCHAR(255) UNIQUE NOT NULL,
 	"password" VARCHAR(255) NOT NULL,
 	"first_name" VARCHAR(255) NOT NULL,
 	"last_name" VARCHAR(255) NOT NULL,
-	"auth_level" VARCHAR(255) DEFAULT 'ADMIN',
+	"auth_level" VARCHAR(255) DEFAULT 'Parent',
 	"family_id" INT,
 	FOREIGN KEY ("family_id") REFERENCES "family" ("id")
 );
 
+
 CREATE TABLE "child" (
 	"id" SERIAL PRIMARY KEY,
-	"firstName" VARCHAR(255) NOT NULL,
-	"familyId" INT,
-	FOREIGN KEY ("familyId") REFERENCES "family" ("id")
+	"first_name" VARCHAR(255) NOT NULL,
+	"family_id" INT,
+	FOREIGN KEY ("family_id") REFERENCES "family" ("id")
 );
 
-CREATE TABLE "childMedicationJoiner" (
+CREATE TABLE "childMedication" (
 	"id" SERIAL PRIMARY KEY,
-	"childId" INT,
-	FOREIGN KEY ("childId") REFERENCES "child" ("id"),
-	"medicationId" INT,
-	FOREIGN KEY ("medicationId") REFERENCES "medication" ("id"),
+	"medication" VARCHAR(2000)NOT NULL,
 	"comments" VARCHAR (2550),
-	"dosage" VARCHAR(255) NOT NULL
+	"dosage" VARCHAR(255) NOT NULL,
+	"how_often" VARCHAR(255) NOT NULL,
+	"child_id" INT,
+	FOREIGN KEY ("child_id") REFERENCES "child" ("id")
 );
-

@@ -15,26 +15,54 @@ Database [π]
         [π] id SERIAL KEY
         [π] firstName
         [π] parentId
-    [π] family
-        [π] id
     [π] childMedicationJoiner
         [π] id SERIAL KEY 
         [π] childId
-        [π] medicationId
+        [π] medication
         [π] comments
         [π] dosage
         [π] howOften
-    [π] medication
-        [π] id SERIAL KEY
-        [π] name
+
 
 Components [ ]
     [~] About
-    [π] Login [ ] different styling
+    [~] UserPage
+    [π] Login 
     [π] Register
-    [ ] Invite
+        [π] username button
+        [π] first name input
+        [π] last name input
+        [π] password input 
+        [π] submit button
+        [π] family name input
+    [π] Invite
+        [π] username input
+        [π] first name input
+        [π] last name input
+        [π] password input
+        [π] helper checkbox
     [ ] Parent Child Input
-    [ ] Manage Child
-    [ ] Parent Table View
+        [ ] Child name input 
+        [ ] Medication input 
+        [ ] Comments input 
+        [ ] Dosage input 
+        [ ] How often input 
+    [ ] Parent Child Medication Table
+        [ ] Headers and rows
+        [ ] input data from database using GET
     [ ] Parent Table Edit
+        [ ] Edit button on normal table view --> links to different view
+        [ ] delete button renders
+        [ ] delete button confirmation
+        [ ] data fields become input fields
+        [ ] save button links back to normal table view
     [ ] Helper View
+        [ ] Dropdown with all children names
+            OR
+        [ ] table renders all children connected to family
+
+    [ ] LOGOUT BUTTON WORKS ON ALL PAGES
+        [ ] brings the user to the login page 
+
+    [ ] STYLING
+        [ ] change styling of all pages 

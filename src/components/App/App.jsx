@@ -20,6 +20,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import Invite from '../Invite/Invite';
+import ChildMedication from '../ChildInput/ChildInput';
 
 import './App.css';
 
@@ -71,10 +72,35 @@ function App() {
 
           <ProtectedRoute
             exact
-            path="/invite"
+            path="/api/user/invite"
           >
             <Invite />
           </ProtectedRoute>
+
+          {/* <Route
+            exact
+            path='/user/child'
+          >
+            <ChildMedication />
+          </Route> */}
+
+          {/* <ProtectedRoute
+            exact
+            path='/user/child'
+          >
+            <ChildMedication />
+          </ProtectedRoute> */}
+
+          <Route
+            exact
+            path="/user/child"
+          >
+            {user.auth_level === 'Helper' ?
+              <Redirect to="/user/child" />
+              :
+              <ChildMedication />
+            }
+          </Route> 
 
           <Route
             exact
@@ -106,11 +132,11 @@ function App() {
 
           <Route
             exact
-            path="/invite"
+            path="/api/user/invite"
           >
             {user.id ?
             
-            <Redirect to="/invite" />
+            <Redirect to="/api/user/invite" />
             :
             <RegisterPage />
           }

@@ -6,6 +6,7 @@ function RegisterForm() {
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [familyName, setFamilyName] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
 
@@ -20,6 +21,7 @@ function RegisterForm() {
         firstName: firstName,
         lastName: lastName,
         authLevel: 'Parent',
+        familyName: familyName,
       },
     });
   }; // end registerUser
@@ -27,7 +29,7 @@ function RegisterForm() {
   return (
 
     <form className="formPanel" onSubmit={registerUser}>
-      <h2>Register User</h2>
+      <h2>Register Parent</h2>
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
@@ -78,6 +80,18 @@ function RegisterForm() {
             value={password}
             required
             onChange={(event) => setPassword(event.target.value)}
+          />
+        </label>
+      </div>
+      <div>
+        <label htmlFor="familyName">
+          Family Name:
+          <input
+            type="text"
+            name="familyName"
+            value={familyName}
+            required
+            onChange={(event) => setFamilyName(event.target.value)}
           />
         </label>
       </div>
