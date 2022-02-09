@@ -13,14 +13,19 @@ function SelectChild(){
         });
     }, [dispatch]);
     
+    const getData = () => {
+        dispatch({
+            type: 'FETCH_DATA'
+        })
+    }
 
 
     const names = useSelector(store => store.names);
-    console.log('names in selectChild is', names);
+    //console.log('names in selectChild is', names);
 
     return(
         <>
-            <select name="childNames">
+            <select name="childNames" onSelect={getData}>
                 {names?.map((name, i)  => (
                     <option value={name.first_name} key={i}>{name.first_name}</option>
                 ))}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import SelectChild from '../SelectChild/SelectChild';
+
 
 function ChildInput() {
     const [childName, setChildName] = useState('');

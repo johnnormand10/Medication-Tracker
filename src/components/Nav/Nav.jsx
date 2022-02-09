@@ -33,6 +33,10 @@ function Nav() {
               Child/Medication
             </Link>
 
+            <Link className="navLink" to='/api/user/table'>
+              Table View
+            </Link>
+
             <Link className="navLink" to="/api/user/invite">
               Invite Page
             </Link>
