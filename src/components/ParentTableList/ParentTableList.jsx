@@ -2,11 +2,13 @@ function ParentTableList({item}){
 
     return(
         <>
-            <td>{item.first_name} test</td>
-            <td>{item.medication} test</td>
-            <td>{item.comments} test</td>
-            <td>{item.dosage} test</td>
-            <td>{item.howOften} test</td>
+        <tr>
+            <td>{item.first_name}</td>
+            <td>{item.medication}</td>
+            <td>{item.comments}</td>
+            <td>{item.dosage}</td>
+            <td>{item.howOften}</td>
+            </tr>
         </> 
     )
 }

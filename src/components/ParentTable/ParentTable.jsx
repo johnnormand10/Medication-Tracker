@@ -14,11 +14,16 @@ function ParentTable(){
         dispatch({
             type: 'FETCH_NAME'
         })
+
+        dispatch({
+            type: 'FETCH_DATA'
+        })
     }, [dispatch])
 
     const handleSelect = () => {
         dispatch({
-            type: 'FETCH_DATA'
+            type: 'CERTAIN_DATA',
+            payload: name.first_name
         })
     }
 
@@ -26,7 +31,7 @@ function ParentTable(){
 
     return(
         <>
-        <select name="childNames" onSelect={handleSelect}>
+        <select name="childNames" onChange={handleSelect}>
             {names?.map((name, i) => (
                 <option value={name.first_name} key={i}>{name.first_name}</option>
             ))}
@@ -43,14 +48,11 @@ function ParentTable(){
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
                 {data?.map(item => (
                     <>
-                    <td>{item}</td>
-                    <ParentTableList item={item}/>
+                    <ParentTableList item={item} />
                     </>
                 ))}
-                </tr>
                 </tbody>
             </table>
         </div>

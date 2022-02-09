@@ -5,6 +5,8 @@ import userSaga from './user.saga';
 import inviteSaga from './invite.saga';
 import childInputSaga from './childMedication.saga';
 import namesSaga from './names.saga';
+import tableSaga from './table.saga';
+import certainSaga from './certainTable.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -21,5 +23,7 @@ export default function* rootSaga() {
     inviteSaga(),
     childInputSaga(),
     namesSaga(),
+    tableSaga(),
+    certainSaga(),
   ]);
 }

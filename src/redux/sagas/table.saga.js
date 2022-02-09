@@ -4,12 +4,14 @@ import { put, takeEvery } from 'redux-saga/effects';
 //worker Saga: will be fired on 'FETCH_DATA' actions
 function*  fetchData(action){
     try{
-        let response = yield axios.get('/api/user/table')
+        const response = yield axios.get('/api/user/table')
 
         yield put({
             type: 'SET_DATA',
-            payload: response.payload
+            payload: response.data
         })
+
+        
     }
     catch(error) {
         console.error('ERROR GETting data in tableSaga', error);
@@ -19,3 +21,5 @@ function*  fetchData(action){
 function* tableSaga(){
     yield takeEvery('FETCH_DATA', fetchData);
 }
+
+export default tableSaga;
