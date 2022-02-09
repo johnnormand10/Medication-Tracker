@@ -12,18 +12,24 @@ router.get('/', (req, res) => {
 
     const queryText = `
         SELECT 
-            *
-        FROM "family"
+            "child"."first_name",
+            "childMedication"."medication",
+            "childMedication"."comments",
+            "childMedication"."dosage",
+            "childMedication"."how_often"
+        FROM "users"
+        JOIN "family"
+            ON "users"."family_id" = "family"."id"
         JOIN "child" 
             ON "family"."id" = "child"."family_id"
         JOIN "childMedication" 
             ON "child"."id" = "childMedication"."child_id"
         WHERE 
-            "family_id" = $1;
+            "users"."id" = $1;
     `;
 
     const queryParams = [
-        req.user.familyId
+        req.user.id
     ];
 
     pool.query(queryText, queryParams)

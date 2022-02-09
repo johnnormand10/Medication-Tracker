@@ -5,6 +5,7 @@ import childMedication from './childMedication.reducer';
 import invite from './invite.reducer';
 import names from './names.reducer';
 import tableReducer from './table.reducer';
+import certainReducer from './certain.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -19,6 +20,7 @@ const rootReducer = combineReducers({
   invite,
   names,
   tableReducer,
+  certainReducer,
 });
 
 export default rootReducer;
