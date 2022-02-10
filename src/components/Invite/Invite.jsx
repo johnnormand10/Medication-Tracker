@@ -1,13 +1,14 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Invite(){
-    const [inviteUsername, setUsername] = useState('');
-    const [invitePassword, setPassword] = useState('');
-    const [inviteFirst, setFirstName] = useState('');
-    const [inviteLast, setLastName] = useState('');
-    const [parentHelper, setParentHelper] = useState('');
+
+    const [inviteUsername, setInviteUsername] = useState('');
+    const [invitePassword, setInvitePassword] = useState('');
+    const [inviteFirst, setInviteFirstName] = useState('');
+    const [inviteLast, setInviteLastName] = useState('');
+    const [parentHelper, setInviteParentHelper] = useState('');
+
     const errors = useSelector((store) => store.errors);
     const dispatch = useDispatch();
 
@@ -26,11 +27,11 @@ function Invite(){
             }
         });
 
-        setUsername('');
-        setPassword('');
-        setFirstName('');
-        setLastName('');
-        setParentHelper('');
+        setInviteUsername('');
+        setInvitePassword('');
+        setInviteFirstName('');
+        setInviteLastName('');
+        setInviteParentHelper('');
     }; //end inviteUser
 
     function unCheck() {
@@ -56,7 +57,7 @@ function Invite(){
                         name="username"
                         value={inviteUsername}
                         required
-                        onChange={(event) => setUsername(event.target.value)}
+                        onChange={(event) => setInviteUsername(event.target.value)}
                     />
                 </label>
             </div>
@@ -68,7 +69,7 @@ function Invite(){
                         name="firstName"
                         value={inviteFirst}
                         required
-                        onChange={(event) => setFirstName(event.target.value)}
+                        onChange={(event) => setInviteFirstName(event.target.value)}
                     />
                 </label>
             </div>
@@ -80,7 +81,7 @@ function Invite(){
                         name="lastName"
                         value={inviteLast}
                         required
-                        onChange={(event) => setLastName(event.target.value)}
+                        onChange={(event) => setInviteLastName(event.target.value)}
                     />
                 </label>
             </div>
@@ -92,7 +93,7 @@ function Invite(){
                         name="password"
                         value={invitePassword}
                         required
-                        onChange={(event) => setPassword(event.target.value)}
+                        onChange={(event) => setInvitePassword(event.target.value)}
                     />
                 </label>
             </div>
@@ -103,7 +104,7 @@ function Invite(){
                     name="Helper"
                     id="helper"
                     value='Helper'
-                    onChange={(event) => setParentHelper(event.target.value)}
+                    onChange={(event) => setInviteParentHelper(event.target.value)}
                 />
                 <label htmlFor="helper">Helper</label>
             </div>

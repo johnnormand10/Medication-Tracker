@@ -1,16 +1,19 @@
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import ParentTableList from '../ParentTableList/ParentTableList';
-import SelectChild from '../SelectChild/SelectChild';
 import { useEffect, useState } from 'react';
 import CertainTableList from '../CertainTableList/CertainTableList';
 
 function ParentTable(){
+    const user = useSelector((store) => store.user);
+
 
     const data = useSelector(store => store.tableReducer);
     const certain = useSelector(store => store.CertainTableList);
     const names = useSelector(store => store.names);
     const dispatch = useDispatch();
+
+
 
     useEffect(() => {
         dispatch({
@@ -22,20 +25,19 @@ function ParentTable(){
         }) 
     }, [])
 
-    const handleChange = (event) => {
-        event.preventDefault();
 
+    const click = () => {
+        console.log('edit button clicked');
     }
 
 
-    //CANNOT GET THE ID FROM THE OPTION
 
     return(
         <>
-        <select name="childNames" onChange={(event) => dispatch({ type: 'CERTAIN_DATA', payload: {nameId: event.target.value}})}>
+        <select name="childNames" onSelect={(event) => setId(event.target.value)} onChange={(event) => dispatch({ type: 'CERTAIN_DATA', payload: {nameId: event.target.value}})}>
                 <option value="" disabled selected>Child Names</option>
             {names?.map((name) => (
-                <option value={name.id} key={name.id} onChange={() => dispatch({ type: 'CERTAIN_DATA', payload: {nameId: name.id}})}>{name.first_name}</option>
+                <option value={name.id} key={name.id} onSelect={(event) => setId(event.target.value)} onChange={() => dispatch({ type: 'CERTAIN_DATA', payload: {nameId: name.id}})}>{name.first_name}</option>
             ))}
         </select>
         <div>
@@ -50,7 +52,7 @@ function ParentTable(){
                 </tr>
                 </thead>
                 <tbody>
-                {name ?
+                {names ?
                     certain?.map(item => (
                         <CertainTableList item={item} key={item.id}/>
                     ))
@@ -63,6 +65,11 @@ function ParentTable(){
                 }
                 </tbody>
             </table>
+            {user.auth_level === 'Parent' ?
+                <button onClick={click}>Edit</button>
+                :
+                <></>
+            }
         </div>
         </>
     )
