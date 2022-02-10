@@ -10,7 +10,6 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, { user.username}!</h2>
-      <SelectChild />
       <LogOutButton className="btn" />
     </div>
   );
