@@ -10,14 +10,15 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
     const queryText = `
         SELECT 
-            "child"."first_name"
+            "child"."id",
+            "child"."first_name"            
         FROM "users"
         JOIN "family"
             ON "users"."family_id" = "family"."id"
         JOIN "child"
             ON "family"."id" = "child"."family_id"
         WHERE "users"."id" = $1
-        GROUP BY "child"."first_name";
+        GROUP BY "child"."first_name", "child"."id";
     `;
 
     const queryParams = [

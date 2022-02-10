@@ -4,7 +4,10 @@ import { put, takeEvery } from 'redux-saga/effects';
 //worker Saga: will be fired on 'FETCH_DATA' actions
 function*  fetchData(action){
     try{
+        console.log('response in tableSaga is', action.payload);
         const response = yield axios.get('/api/user/table')
+        
+        
 
         yield put({
             type: 'SET_DATA',

@@ -47,10 +47,11 @@ Components [ ]
         [π] Comments input 
         [π] Dosage input 
         [π] How often input 
-    [ ] Parent Child Medication Table
-        [ ] Dropdown with child names
-        [ ] Headers and rows
-        [ ] input data from database using GET
+    [π] Parent Child Medication Table
+        [π] Dropdown with child names
+        [π] Headers and rows
+        [π] input data from database using GET
+        [ ] Can see separate data table if name in dropdown menu is clicked on
     [ ] Parent Table Edit
         [ ] Edit button on normal table view --> links to different view
         [ ] delete button renders

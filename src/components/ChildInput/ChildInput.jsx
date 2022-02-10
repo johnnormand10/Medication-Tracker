@@ -1,9 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 
+
 function ChildInput() {
-    const [childName, setChildName] = useState('');
+
+    const names = useSelector(store => store.names);
+
+    const [childId, setChildId] = useState('');
     const [comment, setComment] = useState('');
     const [dosage, setDosage] = useState('');
     const [medication, setMedication] = useState('');
@@ -11,13 +15,19 @@ function ChildInput() {
 
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch({
+            type: 'FETCH_NAME'
+        })
+    }, [])
+
     const submitChild = (event) => {
         event.preventDefault();
 
         dispatch({
             type: 'CHILD_MEDICATION',
             payload: {
-                childName: childName,
+                childId: childId,
                 medication: medication,
                 comment: comment,
                 dosage: dosage,
@@ -25,7 +35,6 @@ function ChildInput() {
             }
         });
 
-        setChildName('');
         setComment('');
         setDosage('');
         setMedication('');
@@ -38,7 +47,13 @@ function ChildInput() {
         <form className="formPanel" onSubmit={submitChild}>
             <h2>TBD</h2>
             <div>
-                <label htmlFor="childName">
+                <select name="childNames" onChange={(event) => setChildId(event.target.value)}>
+                    <option value="" disabled selected>Child Names</option>
+                    {names?.map((name) => (
+                        <option value={name.id} key={name.id} onChange={(event) => setChildId(event.target.value)}>{name.first_name}</option>
+                    ))}
+                </select>
+                {/* <label htmlFor="childName">
                     Child:
                     <input 
                         type="text"
@@ -47,7 +62,7 @@ function ChildInput() {
                         required
                         onChange={(event) => setChildName(event.target.value)}
                     />
-                </label>
+                </label> */}
             </div>
             <div>
                 <label htmlFor="medication">

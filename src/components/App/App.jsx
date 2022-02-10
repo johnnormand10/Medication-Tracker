@@ -22,6 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import Invite from '../Invite/Invite';
 import ChildMedication from '../ChildInput/ChildInput';
 import ParentTable from '../ParentTable/ParentTable';
+import ChildNameInput from '../ChildNameInput/ChildNameInput';
 
 import './App.css';
 
@@ -53,6 +54,15 @@ function App() {
           >
             <AboutPage />
           </Route>
+
+          <Route
+            exact
+            path="/name"
+          >
+            <ChildNameInput />
+          </Route>
+
+
 
           <Route
             exact

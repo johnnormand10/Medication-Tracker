@@ -1,12 +1,9 @@
 const express = require('express');
-const { rejectUnauthenticated } = require('../modules/authentication-middleware');
-const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
-const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
     console.log('in certainRouter');
 
     const queryText = `
@@ -24,11 +21,19 @@ router.get('/', (req, res) => {
     JOIN "childMedication" 
         ON "child"."id" = "childMedication"."child_id"
     WHERE 
-        "child"."first_name" = $1;
+        "users"."id" = $1
+        AND
+        "child"."id" = $2;
     `;
 
+    console.log('user.id in certain.router is:', req.user.id);
+    console.log('nameId in certain.router is:', req.params.id);
+    
+    
+
     const queryParams = [
-        req.body.name
+        req.user.id,
+        req.params.id
     ];
 
     pool.query(queryText, queryParams)
