@@ -16,27 +16,21 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 
 // Handles POST request with new user data
 router.post('/', (req, res) => {
-    const childName = req.body.childName;
+    const childId = req.body.childId;
     const medication = req.body.medication;
     const comment = req.body.comment;
     const dosage = req.body.dosage;
     const howOften = req.body.howOften;
-    const familyId = req.user.family_id
 
 
     const queryText = `
-        with rows as(
-            INSERT INTO "child" ("first_name", "family_id") VALUES ($1, $2) RETURNING id
-        )
         INSERT INTO "childMedication"
             ("medication", "comments", "dosage", "how_often", "child_id")
-        SELECT
-            $3, $4, $5, $6, id
-        FROM rows
-        RETURNING id;
+        VALUES
+            ($1, $2, $3, $4, $5);
     `;
 
-    pool.query(queryText, [childName, familyId, medication, comment, dosage, howOften])
+    pool.query(queryText, [medication, comment, dosage, howOften, childId])
     .then(() => res.sendStatus(201))
     .catch((err) => {
         console.error('Child Medication failed:', err);

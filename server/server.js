@@ -14,7 +14,7 @@ const inviteRouter = require('./routes/invite.router');
 const nameRouter = require('./routes/names.router');
 const tableRouter = require('./routes/table.router');
 const certainRouter = require('./routes/certain.router');
-
+const childName = require('./routes/childName.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -33,7 +33,8 @@ app.use('/api/user/medication', childRouter);
 app.use('/api/user/invite', inviteRouter);
 app.use('/api/user/names', nameRouter);
 app.use('/api/user/table', tableRouter);
-app.use('/api/user/table', certainRouter);
+app.use('/api/user/certain', certainRouter);
+app.use('/name', childName);
 
 
 // Serve static files

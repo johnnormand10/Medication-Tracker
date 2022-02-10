@@ -2,11 +2,13 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import ParentTableList from '../ParentTableList/ParentTableList';
 import SelectChild from '../SelectChild/SelectChild';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import CertainTableList from '../CertainTableList/CertainTableList';
 
 function ParentTable(){
 
     const data = useSelector(store => store.tableReducer);
+    const certain = useSelector(store => store.CertainTableList);
     const names = useSelector(store => store.names);
     const dispatch = useDispatch();
 
@@ -17,23 +19,23 @@ function ParentTable(){
 
         dispatch({
             type: 'FETCH_DATA'
-        })
-    }, [dispatch])
+        }) 
+    }, [])
 
-    const handleSelect = () => {
-        dispatch({
-            type: 'CERTAIN_DATA',
-            payload: name.first_name
-        })
+    const handleChange = (event) => {
+        event.preventDefault();
+
     }
 
- 
+
+    //CANNOT GET THE ID FROM THE OPTION
 
     return(
         <>
-        <select name="childNames" onChange={handleSelect}>
-            {names?.map((name, i) => (
-                <option value={name.first_name} key={i}>{name.first_name}</option>
+        <select name="childNames" onChange={(event) => dispatch({ type: 'CERTAIN_DATA', payload: {nameId: event.target.value}})}>
+                <option value="" disabled selected>Child Names</option>
+            {names?.map((name) => (
+                <option value={name.id} key={name.id} onChange={() => dispatch({ type: 'CERTAIN_DATA', payload: {nameId: name.id}})}>{name.first_name}</option>
             ))}
         </select>
         <div>
@@ -48,11 +50,17 @@ function ParentTable(){
                 </tr>
                 </thead>
                 <tbody>
-                {data?.map(item => (
-                    <>
-                    <ParentTableList item={item} />
-                    </>
-                ))}
+                {name ?
+                    certain?.map(item => (
+                        <CertainTableList item={item} key={item.id}/>
+                    ))
+                
+                    :
+                
+                    data?.map(item => (
+                        <ParentTableList item={item} key={item.id}/>
+                    ))
+                }
                 </tbody>
             </table>
         </div>

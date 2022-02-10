@@ -1,16 +1,16 @@
-function ParentTableList({item}){
-
+function CertainTableList({item}){
+    
     return(
         <>
-        <tr key={item.id}>
+        <tr>
             <td>{item.first_name}</td>
             <td>{item.medication}</td>
             <td>{item.comments}</td>
             <td>{item.dosage}</td>
             <td>{item.howOften}</td>
         </tr>
-        </> 
+        </>
     )
 }
 
-export default ParentTableList;
+export default CertainTableList;
