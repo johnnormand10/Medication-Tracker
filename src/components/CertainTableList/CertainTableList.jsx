@@ -2,7 +2,7 @@ function CertainTableList({item}){
     
     return(
         <>
-        <tr>
+        <tr key={item.id}>
             <td>{item.first_name}</td>
             <td>{item.medication}</td>
             <td>{item.comments}</td>

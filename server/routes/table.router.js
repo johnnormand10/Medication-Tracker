@@ -13,6 +13,7 @@ router.get('/', (req, res) => {
     const queryText = `
         SELECT 
             "child"."first_name",
+            "childMedication"."id",
             "childMedication"."medication",
             "childMedication"."comments",
             "childMedication"."dosage",

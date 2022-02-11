@@ -6,6 +6,7 @@ import invite from './invite.reducer';
 import names from './names.reducer';
 import tableReducer from './table.reducer';
 import certainReducer from './certain.reducer';
+import activeEditInfo from './fetchEditInfo.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   names,
   tableReducer,
   certainReducer,
+  activeEditInfo,
 });
 
 export default rootReducer;
