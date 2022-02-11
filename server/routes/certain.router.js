@@ -8,6 +8,7 @@ router.get('/:id', (req, res) => {
 
     const queryText = `
     SELECT 
+        "child"."id",
         "child"."first_name",
         "childMedication"."medication",
         "childMedication"."comments",

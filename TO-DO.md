@@ -51,7 +51,6 @@ Components [ ]
         [π] Dropdown with child names
         [π] Headers and rows
         [π] input data from database using GET
-        [ ] Can see separate data table if name in dropdown menu is clicked on
     [ ] Parent Table Edit
         [ ] Edit button on normal table view --> links to different view
         [ ] delete button renders
@@ -63,8 +62,11 @@ Components [ ]
             OR
         [ ] table renders all children connected to family
 
+
     [ ] LOGOUT BUTTON WORKS ON ALL PAGES
         [ ] brings the user to the login page 
 
     [ ] STYLING
         [ ] change styling of all pages 
+
+    [ ] SELECT TABLE VIEW STRETCH

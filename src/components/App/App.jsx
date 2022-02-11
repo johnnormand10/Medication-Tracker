@@ -23,6 +23,7 @@ import Invite from '../Invite/Invite';
 import ChildMedication from '../ChildInput/ChildInput';
 import ParentTable from '../ParentTable/ParentTable';
 import ChildNameInput from '../ChildNameInput/ChildNameInput';
+import EditForm from '../EditForm/EditForm';
 
 import './App.css';
 
@@ -62,8 +63,6 @@ function App() {
             <ChildNameInput />
           </Route>
 
-
-
           <Route
             exact
             path="/api/user/table"
@@ -91,12 +90,9 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          {/* <ProtectedRoute
-            exact
-            path="/api/user/invite"
-          >
-            <Invite />
-          </ProtectedRoute> */}
+          <Route exact path="/api/user/table/:id/edit">
+            <EditForm/>
+          </Route>
 
           <Route
             exact
@@ -109,26 +105,12 @@ function App() {
             }
           </Route> 
 
-          {/* <Route
-            exact
-            path='/user/child'
-          >
-            <ChildMedication />
-          </Route> */}
-
-          {/* <ProtectedRoute
-            exact
-            path='/user/child'
-          >
-            <ChildMedication />
-          </ProtectedRoute> */}
-
           <Route
             exact
             path="/api/user/medication"
           >
             {user.auth_level === 'Helper' ?
-              <Redirect to="/api/user/medication" />
+              <Redirect to="/user" />
               :
               <ChildMedication />
             }

@@ -15,6 +15,8 @@ const nameRouter = require('./routes/names.router');
 const tableRouter = require('./routes/table.router');
 const certainRouter = require('./routes/certain.router');
 const childName = require('./routes/childName.router');
+const saveInfo = require('./routes/saveInfo.router')
+const fetchEditInfo = require('./routes/fetchEditInfo.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -35,6 +37,8 @@ app.use('/api/user/names', nameRouter);
 app.use('/api/user/table', tableRouter);
 app.use('/api/user/certain', certainRouter);
 app.use('/name', childName);
+app.use('/api/user/table/:id/edit', fetchEditInfo);
+
 
 
 // Serve static files
