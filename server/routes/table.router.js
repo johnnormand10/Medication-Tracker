@@ -43,4 +43,54 @@ router.get('/', (req, res) => {
     })
 });
 
+
+router.put('/:id', (req, res) => {
+    console.log('in updateItem.router');
+    
+    
+    let queryText = `
+        UPDATE "childMedication"
+        SET "medication" = $1, "comments"=$2, "dosage"=$3, "how_often"=$4
+        WHERE id = $5
+    `;
+
+    let queryParams = [
+        req.body.medication,
+        req.body.comments,
+        req.body.dosage,
+        req.body.how_often,
+        req.params.id,
+    ];
+
+    pool.query(queryText, queryParams)
+    .then((result) => {
+        res.sendStatus(201);
+    })
+    .catch((error) => {
+        console.error(`ERROR making database query ${queryText}`, error);
+        res.sendStatus(500);
+    })
+})
+
+
+router.delete('/:id',  (req, res) => {
+    console.log('req.params.id in delete', req.params.id);
+
+        const queryText = `
+            DELETE FROM "childMedication"
+            WHERE id = $1
+        `;
+
+        pool.query(queryText, [req.params.id])
+        .then((result) => {
+            console.log(result);
+            res.sendStatus(204);
+        })
+        .catch((err) => {
+            console.error('DELETE Failed in table.router.js');
+            res.sendStatus(500);
+        })
+    
+})
+
 module.exports = router;
