@@ -1,11 +1,7 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
-function* setCurrentMedication(action){
-    console.log('in setCurrentMedication');
-
-    console.log('setCurrentMedication', action.payload.id);
-    
+function* setCurrentMedication(action){    
     try{
         let response = yield axios.get(`/get/table/${action.payload.id}`)
         console.log('response.data in currentMedication is:', response.data);

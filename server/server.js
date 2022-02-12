@@ -19,6 +19,7 @@ const saveInfo = require('./routes/saveInfo.router');
 const fetchEditInfo = require('./routes/fetchEditInfo.router');
 const currentMedication = require('./routes/currentMedication.router');
 
+
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -35,12 +36,13 @@ app.use('/api/user', userRouter);
 app.use('/api/user/medication', childRouter);
 app.use('/api/user/invite', inviteRouter);
 app.use('/api/user/names', nameRouter);
-app.use('/api/user/table', tableRouter);
+app.use('/api/user/table', tableRouter);//th-th
 app.use('/api/user/certain', certainRouter);
 app.use('/name', childName);
 app.use('/user/save', saveInfo);
 app.use('/user/edit', fetchEditInfo);
 app.use('/get/table', currentMedication);
+
 
 
 

@@ -11,10 +11,11 @@ function EditForm(){
     const item = useSelector(store => store.currentMedication);
     console.log('item is', item);
 
-    const [medicationName, setMedicationName] = useState(item[0].medication);
-    const [comments, setComments] = useState(item[0].comments);
+    
+    const [comments, setComments] = useState(item.comments);
     const [dosage, setDosage] = useState(item[0].dosage);
     const [howOften, setHowOften] = useState(item[0].how_often);
+    const [medicationName, setMedicationName] = useState(item[0].medication);
     
 
     const handleSubmit = (event) => {

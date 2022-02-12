@@ -11,6 +11,8 @@ import childNameSaga from './childName.saga';
 import fetchActiveInfo from './fetchEditInfo.saga';
 import saveInfoSaga from './saveInfo.saga';
 import currentMedication from './currentMedication.saga';
+import updateItem from './updateItem.saga';
+import deleteSaga from './delete.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -33,5 +35,7 @@ export default function* rootSaga() {
     fetchActiveInfo(),
     saveInfoSaga(),
     currentMedication(),
+    updateItem(),
+    deleteSaga(),
   ]);
 }
