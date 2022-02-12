@@ -90,7 +90,7 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <Route exact path="/api/user/table/:id/edit">
+          <Route exact path="/user/:id">
             <EditForm/>
           </Route>
 

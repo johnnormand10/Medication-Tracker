@@ -1,4 +1,4 @@
-const activeEditInfo = (state = {}, action) => {
+const activeEditInfo = (state = [], action) => {
     switch(action.type){
         case 'SET_ACTIVE_INFO' :
             return action.payload;
@@ -11,4 +11,4 @@ const activeEditInfo = (state = {}, action) => {
     return state;
 }
 
-export default activeEditInfo;
+export default activeEditInfo; 

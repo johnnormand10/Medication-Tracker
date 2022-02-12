@@ -50,6 +50,7 @@ function ParentTable(){
                 </tr>
                 </thead>
                 <tbody>
+        
                 {!names.id ?
                     data?.map(item => (
                         <ParentTableList item={item} key={item.id}/>

@@ -7,6 +7,7 @@ import names from './names.reducer';
 import tableReducer from './table.reducer';
 import certainReducer from './certain.reducer';
 import activeEditInfo from './fetchEditInfo.reducer';
+import currentMedication from './currentMedication.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   tableReducer,
   certainReducer,
   activeEditInfo,
+  currentMedication,
 });
 
 export default rootReducer;

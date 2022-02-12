@@ -10,6 +10,7 @@ import certainSaga from './certainTable.saga';
 import childNameSaga from './childName.saga';
 import fetchActiveInfo from './fetchEditInfo.saga';
 import saveInfoSaga from './saveInfo.saga';
+import currentMedication from './currentMedication.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -31,5 +32,6 @@ export default function* rootSaga() {
     childNameSaga(),
     fetchActiveInfo(),
     saveInfoSaga(),
+    currentMedication(),
   ]);
 }
