@@ -5,13 +5,14 @@ function* fetchActiveInfo(action){
     try{
         console.log('action.payload in fetchEditInfo is:', action.payload);
         
-        const response = yield axios.get(`/api/user/table/${action.payload}/edit`);
-        console.log('response.data is ', response.data);
+        const response = yield axios.post(`/user/edit/${action.payload.id}`, action.payload);
+        
         
         yield put({
             type: 'SET_ACTIVE_INFO',
             payload: response.data
         })
+        console.log('response.data is ', response.data);
     }
     catch(error) {
         console.error('ERROR in GETting info during edit', error);
@@ -20,10 +21,10 @@ function* fetchActiveInfo(action){
 
 
 
-
+ 
 
 function* fetchEditInfo(){
     yield takeEvery('FETCH_ACTIVE_EDIT', fetchActiveInfo);
 }
 
-export default fetchEditInfo;
+export default fetchEditInfo; 

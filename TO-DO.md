@@ -52,7 +52,7 @@ Components [ ]
         [π] Headers and rows
         [π] input data from database using GET
     [ ] Parent Table Edit
-        [ ] Edit button on normal table view --> links to different view
+        [∏] Edit button on normal table view --> links to different view
         [ ] delete button renders
         [ ] delete button confirmation
         [ ] data fields become input fields

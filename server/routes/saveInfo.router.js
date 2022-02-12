@@ -7,9 +7,7 @@ router.put('/:id', (req, res) => {
 
     const queryText = `
         UPDATE "childMedication"
-        SET ("medication", "comments", "dosage", "how_often")
-        VALUES 
-            $1, $2, $3, $4
+        SET "medication" = $1, "comments" = $2, "dosage" = $3, "how_often" = $4
         WHERE id = $5
     `;
 

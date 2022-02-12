@@ -3,7 +3,7 @@ const certainReducer = (state = {}, action) => {
         case 'SET_TABLE' :
             return action.payload
     }
-    console.log('state in certain.reducer', state);
+
     return state;
 }
 

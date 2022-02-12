@@ -3,7 +3,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 function* saveInfo(action) {
     try{
-        yield axios.put(`/api/user/table/${action.payload.id}/edit`, action.payload)
+        yield axios.put(`/user/${action.payload.id}`, action.payload)
 
         yield put({
             type: "FETCH_DATA"
@@ -17,7 +17,7 @@ function* saveInfo(action) {
 
 
 function* saveInfoSaga(){
-    yield takeEvery('SAVE_EDIT', saveInfo);
+    yield takeEvery('SAVE_EDIT_DATA', saveInfo);
 }
 
 export default saveInfoSaga;

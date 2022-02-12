@@ -1,4 +1,4 @@
-const childMedication = (state = {}, action) => {
+const childMedication = (state = [], action) => {
     switch (action.type) {
         case 'SET_CHILD_MEDICATION' :
             return action.payload;
