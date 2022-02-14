@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import SelectChild from '../SelectChild/SelectChild';
 import { useEffect, useState } from 'react';
 import CertainTableList from '../CertainTableList/CertainTableList';
+import swal from 'sweetalert';
 
 //material ui
 import Table from '@mui/material/Table';
@@ -12,6 +13,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import TextField from '@mui/material/TextField';
 
 function ParentTable(){
 
@@ -71,16 +73,37 @@ function ParentTable(){
                 how_often: newHowOften
             }
         })
+   }
 
+   const cancelBtn = () => {
+       setBtnStatus(false);
    }
 
    const removeBtn = (id) => {
-        console.log('In removeBtn');
 
-        dispatch({
-            type: 'DELETE_SELECTED_ITEM',
-            payload: {id: id}
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this row of information!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
         })
+        .then((willDelete) => {
+            if(willDelete){
+                swal("POOF! The row has been deleted!"), {
+                    icon: "success",
+                }
+
+                dispatch({
+                    type: 'DELETE_SELECTED_ITEM',
+                    payload: {id: id}
+                });
+            } else {
+                swal("The row of information is safe!")
+            }
+        });
+
+        console.log('In removeBtn');
    }
 
 
@@ -103,11 +126,12 @@ function ParentTable(){
                     </TableHead>
                     <TableBody>
                         <TableRow key={newId}>
-                            <TableCell><input value={newMedication} onChange={(event) => setNewMedication(event.target.value)}></input></TableCell>
-                            <TableCell align="right"><input value={newComment} onChange={(event) => setNewComment(event.target.value)}></input></TableCell>
-                            <TableCell align="right"><input value={newDosage} onChange={(event) => setNewDosage(event.target.value)}></input></TableCell>
-                            <TableCell align="right"><input value={newHowOften} onChange={(event) => setNewHowOften(event.target.value)}></input></TableCell>
-                            <TableCell align="right"><button onClick={handleSave}>Save Changes</button></TableCell>
+                            <TableCell><TextField id="outlined-basic" size="small" value={newMedication} onChange={(event) => setNewMedication(event.target.value)}/></TableCell>
+                            <TableCell align="right"><TextField id="outlined-basic" size="small" value={newComment} onChange={(event) => setNewComment(event.target.value)}/></TableCell>
+                            <TableCell align="right"><TextField id="outlined-basic" size="small" value={newDosage} onChange={(event) => setNewDosage(event.target.value)}/></TableCell>
+                            <TableCell align="right"><TextField id="outlined-basic" size="small" value={newHowOften} onChange={(event) => setNewHowOften(event.target.value)}/></TableCell>
+                            <TableCell align="right"><button className="btn" onClick={handleSave}>Save Changes</button></TableCell>
+                            <TableCell align="right"><button className="btn" onClick={cancelBtn}>Cancel Changes</button></TableCell>
                         </TableRow>
                     </TableBody>
                     </>
@@ -147,8 +171,8 @@ function ParentTable(){
                             
                             {user.auth_level === 'Parent' ?
                                 <>
-                                <TableCell align="right"><button onClick={event => handleBtn(item)}>Edit</button></TableCell>
-                                <TableCell align="right"><button onClick={event => removeBtn(item.id)}>Delete</button></TableCell>
+                                <TableCell align="right"><button className="btn" onClick={event => handleBtn(item)}>Edit</button></TableCell>
+                                <TableCell align="right"><button className="btn" onClick={event => removeBtn(item.id)}>Delete</button></TableCell>
                                 </>
                                 :
                                 <></>
@@ -167,3 +191,4 @@ function ParentTable(){
 }
 
 export default ParentTable;
+
