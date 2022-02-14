@@ -53,16 +53,6 @@ function ChildInput() {
                         <option value={name.id} key={name.id} onChange={(event) => setChildId(event.target.value)}>{name.first_name}</option>
                     ))}
                 </select>
-                {/* <label htmlFor="childName">
-                    Child:
-                    <input 
-                        type="text"
-                        name="child"
-                        value={childName}
-                        required
-                        onChange={(event) => setChildName(event.target.value)}
-                    />
-                </label> */}
             </div>
             <div>
                 <label htmlFor="medication">

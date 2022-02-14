@@ -41,3 +41,5 @@
 .navLink:hover {
   background-color: #008183;
 }
+/* Primary Header */
+/* classNames === nav(main div), nav-title(h2 App Name), navLink(all links)*/
