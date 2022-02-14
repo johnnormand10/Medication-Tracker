@@ -4,54 +4,80 @@ import LogOutButton from '../LogOutButton/LogOutButton';
 import './Nav.css';
 import { useSelector } from 'react-redux';
 
+const primaryNav = document.querySelector('.primary-navigation');
+const navToggle = document.querySelector('.mobile-nav-toggle');
+
+
 
 function Nav() {
   const user = useSelector((store) => store.user);
 
   return (
-    <div className="nav">
+    <div className="nav flex primary-header">
       <Link to="/home">
         <h2 className="nav-title">Medication Tracker</h2>
       </Link>
-      <div>
+
+
+      <div id="primary-navigation" className='primary-navigation'>
+
+
         {/* If no user is logged in, show these links */}
         {!user.id && (
           // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
+          <>
+          <Link className="navLink flex" to="/login">
             Login / Register
           </Link>
-        )}
 
-        {/* If a user is logged in, show these links */}
-        {user.id && (
-          <>
-            <Link className="navLink" to="/user">
-              Home
-            </Link>
-
-            <Link className="navLink" to='/name'>
-              Child Name
-            </Link>
-
-            <Link className="navLink" to="/api/user/medication">
-              Child/Medication
-            </Link>
-
-            <Link className="navLink" to='/api/user/table'>
-              Table View
-            </Link>
-
-            <Link className="navLink" to="/api/user/invite">
-              Invite Page
-            </Link>
-
-            
-
-            <LogOutButton className="navLink" />
+          <Link className="navLink flex" to="/about">
+          About
+          </Link>
           </>
         )}
 
-        <Link className="navLink" to="/about">
+
+        {/* if the user has the correct auth_level */}
+        { user.auth_level === 'Parent' &&
+          <><Link className='navLink flex' to='/user'>
+              Home
+            </Link>
+
+            <Link className='navLink flex' to='/api/user/invite'>
+              Invite Others
+            </Link>
+
+            <Link className='navLink flex' to='/name'>
+              Child Name 
+            </Link>
+
+            <Link className='navLink flex' to='/api/user/medication'>
+              Add Medication
+            </Link>
+
+            <Link className='navLink flex' to='/api/user/table'>
+              Table View
+            </Link>
+
+            <LogOutButton className='navLink flex' />
+            </>
+        }
+            
+        {user.auth_level === 'Helper' && 
+          <>
+          <Link className='navLink flex' to='/user'>
+            Home 
+          </Link>
+
+          <Link className='navLink flex' to='/api/user/table'>
+            Table View
+          </Link>
+
+          <LogOutButton className='navLink flex' />
+          </>
+        }
+
+        <Link className="navLink flex" to="/about">
           About
         </Link>
       </div>

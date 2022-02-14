@@ -52,21 +52,21 @@ Components [ ]
         [π] Headers and rows
         [π] input data from database using GET
     [ ] Parent Table Edit
-        [∏] Edit button on normal table view --> links to different view
-        [ ] delete button renders
+        [π] Edit button on normal table view --> links to different view
+        [π] delete button renders
         [ ] delete button confirmation
-        [ ] data fields become input fields
-        [ ] save button links back to normal table view
-    [ ] Helper View
+        [π] data fields become input fields
+        [π] save button links back to normal table view
+    [π] Helper View
         [ ] Dropdown with all children names
             OR
-        [ ] table renders all children connected to family
-
-
-    [ ] LOGOUT BUTTON WORKS ON ALL PAGES
-        [ ] brings the user to the login page 
-
+        [π] table renders all children connected to family
+        --
+        --
+    [π] LOGOUT BUTTON WORKS ON ALL PAGES
+        [π] brings the user to the login page  
+        --
     [ ] STYLING
         [ ] change styling of all pages 
-
+        --
     [ ] SELECT TABLE VIEW STRETCH

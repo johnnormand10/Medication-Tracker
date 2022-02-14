@@ -129,7 +129,7 @@ function App() {
               <LoginPage />
             }
           </Route>
-
+ 
           <Route
             exact
             path="/registration"

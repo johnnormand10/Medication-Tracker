@@ -4,6 +4,15 @@ import SelectChild from '../SelectChild/SelectChild';
 import { useEffect, useState } from 'react';
 import CertainTableList from '../CertainTableList/CertainTableList';
 
+//material ui
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+
 function ParentTable(){
 
 
@@ -74,60 +83,84 @@ function ParentTable(){
         })
    }
 
+
     return(
         <>
-        {/* <select name="childNames" onChange={(event) => dispatch({ type: 'CERTAIN_DATA', payload: {nameId: event.target.value}})}>
-                <option value="" disabled selected>Child Names</option>
-            {names?.map((name) => (
-                <option value={name.id} key={name.id}  onChange={() => dispatch({ type: 'CERTAIN_DATA', payload: {nameId: name.id}})}>{name.first_name}</option>
-            ))}
-        </select> */}
         <div>
-            <table>
-                <thead>
-                <tr>
-                    <th>Child Name</th>
-                    <th>Medication</th>
-                    <th>Comments/Instructions</th>
-                    <th>Dosage</th>
-                    <th>How Often</th>
-                </tr>
-                </thead>
-                <tbody>
+            <TableContainer component={Paper}>
+            <Table>
                 {
                     btnStatus ?
-                        <tr key={newId}>
-                            <td><input value={newMedication} onChange={(event) => setNewMedication(event.target.value)}></input></td>
-                            <td><input value={newComment} onChange={(event) => setNewComment(event.target.value)}></input></td>
-                            <td><input value={newDosage} onChange={(event) => setNewDosage(event.target.value)}></input></td>
-                            <td><input value={newHowOften} onChange={(event) => setNewHowOften(event.target.value)}></input></td>
-                            <td><button onClick={handleSave}>Save Changes</button></td>
-
-                        </tr>
+                    <>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Medication</TableCell>
+                            <TableCell align="right">Comments/Instructions</TableCell>
+                            <TableCell align="right">Dosage</TableCell>
+                            <TableCell align="right">How Often</TableCell>
+                            <TableCell align="right"></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        <TableRow key={newId}>
+                            <TableCell><input value={newMedication} onChange={(event) => setNewMedication(event.target.value)}></input></TableCell>
+                            <TableCell align="right"><input value={newComment} onChange={(event) => setNewComment(event.target.value)}></input></TableCell>
+                            <TableCell align="right"><input value={newDosage} onChange={(event) => setNewDosage(event.target.value)}></input></TableCell>
+                            <TableCell align="right"><input value={newHowOften} onChange={(event) => setNewHowOften(event.target.value)}></input></TableCell>
+                            <TableCell align="right"><button onClick={handleSave}>Save Changes</button></TableCell>
+                        </TableRow>
+                    </TableBody>
+                    </>
                         
                     :
 
-                    data.map(item => (
-                        <tr key={item.id}>
-                            <td>{item.first_name}</td>
-                            <td>{item.medication}</td>
-                            <td>{item.comments}</td>
-                            <td>{item.dosage}</td>
-                            <td>{item.how_often}</td>
+                    <>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>  ☑️ </TableCell>
+                            <TableCell align="right">Child Name</TableCell>
+                            <TableCell align="right">Medication</TableCell>
+                            <TableCell align="right">Comments/Instructions</TableCell>
+                            <TableCell align="right">Dosage</TableCell>
+                            <TableCell align="right">How Often</TableCell>
+                            <TableCell align="right"></TableCell>
+                            <TableCell align="right"></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                    
+                    {data.map(item => (
+                        <TableRow key={item.id}>
+                            <TableCell><input
+                                    type="checkbox"
+                                    className='checkbox'
+                                    value="Given"
+                                />
+                            </TableCell>
+                            <TableCell align="right">{item.first_name}</TableCell>
+                            <TableCell align="right">{item.medication}</TableCell>
+                            <TableCell align="right">{item.comments}</TableCell>
+                            <TableCell align="right">{item.dosage}</TableCell>
+                            <TableCell align="right">{item.how_often}</TableCell>
+                            
+                                    
+                            
                             {user.auth_level === 'Parent' ?
                                 <>
-                               <td><button onClick={event => handleBtn(item)}>Edit</button></td>
-                               <td><button onClick={event => removeBtn(item.id)}>Delete</button></td>
-                               </>
+                                <TableCell align="right"><button onClick={event => handleBtn(item)}>Edit</button></TableCell>
+                                <TableCell align="right"><button onClick={event => removeBtn(item.id)}>Delete</button></TableCell>
+                                </>
                                 :
                                 <></>
                             }
-                        </tr>
-                    ))
+                        </TableRow>
+                    ))}
+                    </TableBody>
+                    </>
                         
                 }
-                </tbody>
-            </table>
+            </Table>
+            </TableContainer>
         </div>
         </>
     )
