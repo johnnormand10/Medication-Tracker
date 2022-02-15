@@ -51,10 +51,10 @@ Components [ ]
         [π] Dropdown with child names
         [π] Headers and rows
         [π] input data from database using GET
-    [ ] Parent Table Edit
+    [π] Parent Table Edit
         [π] Edit button on normal table view --> links to different view
         [π] delete button renders
-        [ ] delete button confirmation
+        [π] delete button confirmation
         [π] data fields become input fields
         [π] save button links back to normal table view
     [π] Helper View
@@ -69,4 +69,4 @@ Components [ ]
     [ ] STYLING
         [ ] change styling of all pages 
         --
-    [ ] SELECT TABLE VIEW STRETCH
+    [ ] REAL TIME NOTIFICATIONS
