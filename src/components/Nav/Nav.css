@@ -18,8 +18,8 @@
   font-weight: 700;
   color: #f2f2f2;
   padding-left: 10px;
-  margin: 0;
   text-align: center;
+  float: left;
 }
 
 .navLink {
@@ -45,5 +45,12 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-/* Primary Header */
-/* classNames === nav(main div), nav-title(h2 App Name), navLink(all links)*/
+/* image */
+
+img{
+  margin-top: 7px;
+  width: 7%;
+  height: auto;
+  max-height: 50%;
+  float: left;
+}

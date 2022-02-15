@@ -15,6 +15,7 @@ function Nav() {
   return (
     <div className="nav flex primary-header">
       <Link to="/home">
+        <img src='https://images-na.ssl-images-amazon.com/images/I/51YhJru89KL.png'></img>
         <h2 className="nav-title">Medication Tracker</h2>
       </Link>
 
