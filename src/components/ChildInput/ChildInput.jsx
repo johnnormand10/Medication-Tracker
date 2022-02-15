@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
 
 
 
 function ChildInput() {
+
+    const history = useHistory();
 
     const names = useSelector(store => store.names);
 
@@ -40,6 +44,14 @@ function ChildInput() {
         setMedication('');
         setHowOften('');
     };
+
+    const nextPage = () => {
+        history.push('/api/user/table');
+    }
+
+    const prevPage = () => {
+        history.push('/name');
+    }
 
 
     return(
@@ -105,6 +117,10 @@ function ChildInput() {
                 <input className="btn" type="submit" name="submit" value="Submit" />
             </div>
         </form>
+
+        <button className='nextBtn' onClick={nextPage}>NEXT</button>
+        <button className='prevBtn' onClick={prevPage}>PREVIOUS</button>
+
         </>
 
     )

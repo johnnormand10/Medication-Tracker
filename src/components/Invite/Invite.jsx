@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+import './Invite.css';
 
 function Invite(){
+
+    const history = useHistory();
 
     const [inviteUsername, setInviteUsername] = useState('');
     const [invitePassword, setInvitePassword] = useState('');
@@ -41,7 +46,16 @@ function Invite(){
         }
     }
 
+    const nextPage = () => {
+        history.push('/name');
+    }
+
+    const prevPage = () => {
+        history.push('/user');
+    }
+
     return(
+        <>
         <form className="formPanel" onSubmit={inviteUser}>
             <h2>Invite User</h2>
             {errors.registrationMessage && (
@@ -113,6 +127,9 @@ function Invite(){
                 <p> Give your Helper the username and password to login!</p>
             </div>
         </form>
+        <button className='nextBtn' onClick={nextPage}>NEXT</button>
+        <button className='prevBtn' onClick={prevPage}>PREVIOUS</button>
+        </>
     )
 }
 

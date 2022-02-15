@@ -18,6 +18,8 @@ function AboutPage() {
               <li>Redux</li>
               <li>Saga</li>
               <li>PostgesSQL</li>
+              <li>Material-UI</li>
+              <li>Sweet Alerts</li>
             </ul>
       </div>
 

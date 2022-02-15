@@ -106,10 +106,15 @@ function ParentTable(){
         console.log('In removeBtn');
    }
 
+   const [buttonStatus, setButtonStatus] = useState(true)
+   const changeColor = () => {
+        setButtonStatus(!buttonStatus);
+        console.log('buttonStatus of checkbox is', buttonStatus);
+   }
 
     return(
         <>
-        <div>
+        <div className='medTable'>
             <TableContainer component={Paper}>
             <Table>
                 {
@@ -154,7 +159,7 @@ function ParentTable(){
                     <TableBody>
                     
                     {data.map(item => (
-                        <TableRow key={item.id}>
+                        <TableRow key={item.id} id={item.id}>
                             <TableCell><input
                                     type="checkbox"
                                     className='checkbox'

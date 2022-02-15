@@ -1,12 +1,18 @@
 p{
     text-align: center;
-    margin-left: 2 rem;
     margin-left: 2rem;
     margin-top: 0;
 }
 
 ul{
     margin-top: 0;
+}
+
+li{
+    margin-top: 10px;
+    list-style: none;
+    text-align: center;
+    margin-bottom: 0;
 }
 
 h4{
