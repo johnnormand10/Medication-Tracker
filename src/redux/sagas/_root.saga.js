@@ -6,7 +6,6 @@ import inviteSaga from './invite.saga';
 import childInputSaga from './childMedication.saga';
 import namesSaga from './names.saga';
 import tableSaga from './table.saga';
-import certainSaga from './certainTable.saga';
 import childNameSaga from './childName.saga';
 import fetchActiveInfo from './fetchEditInfo.saga';
 import saveInfoSaga from './saveInfo.saga';
@@ -30,7 +29,6 @@ export default function* rootSaga() {
     childInputSaga(),
     namesSaga(),
     tableSaga(),
-    certainSaga(),
     childNameSaga(),
     fetchActiveInfo(),
     saveInfoSaga(),

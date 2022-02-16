@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import SelectChild from '../SelectChild/SelectChild';
 import { useEffect, useState } from 'react';
-import CertainTableList from '../CertainTableList/CertainTableList';
 import swal from 'sweetalert';
 
 //material ui
@@ -23,13 +21,13 @@ function ParentTable(){
     /* const certain = useSelector(store => store.CertainTableList);
     const names = useSelector(store => store.names); */
     const dispatch = useDispatch();
-
+    //local state
     const [newComment, setNewComment] = useState('');
     const [newDosage, setNewDosage] = useState('');
     const [newHowOften, setNewHowOften] = useState('');
     const [newMedication, setNewMedication] = useState('');
     const [newId, setNewId] = useState('');
-
+    // on page load... FETCH_NAME(gets names from the store) and FETCH_DATA(gets data from the store)
     useEffect(() => {
         dispatch({
             type: 'FETCH_NAME'
@@ -39,15 +37,16 @@ function ParentTable(){
             type: 'FETCH_DATA'
         }) 
     }, [])
-
+    //local state for the button that controls the edit field
     const [btnStatus, setBtnStatus] = useState(false);
-
-   const handleBtn = (item) => {
+    //handle edit button click function
+    const handleBtn = (item) => {
         console.log('in handleBtn');
-
+        //sets the edit button status to true
         setBtnStatus(true);
+        //checking what the edit button status is 
         console.log('UPDATE btnStatus is:', btnStatus);
-
+        //set local states to the new edited values
         setNewMedication(item.medication);
         setNewComment(item.comments);
         setNewDosage(item.dosage);
@@ -56,13 +55,15 @@ function ParentTable(){
 
    }
   
-
+   //handle save button function
    const handleSave = () => {
+       //checking if I made it to the function
         console.log('in handSave');
-
+        //setting the edit button status to false 
         setBtnStatus(false);
+        //checking what the edit button status is 
         console.log('save btnStatus is:', btnStatus);
-
+        //sending a SAGA request to execute 
         dispatch({
             type: 'UPDATE_ITEM',
             payload: {
@@ -74,13 +75,14 @@ function ParentTable(){
             }
         })
    }
-
+   //cancel button clicked function
    const cancelBtn = () => {
+       //sets the edit button status to false
        setBtnStatus(false);
    }
-
+   //delete button clicked function
    const removeBtn = (id) => {
-
+        //sweet alert for confirmation of delete 
         swal({
             title: "Are you sure?",
             text: "Once deleted, you will not be able to recover this row of information!",
@@ -93,7 +95,7 @@ function ParentTable(){
                 swal("POOF! The row has been deleted!"), {
                     icon: "success",
                 }
-
+                //sending a SAGA request to execute
                 dispatch({
                     type: 'DELETE_SELECTED_ITEM',
                     payload: {id: id}
@@ -102,24 +104,20 @@ function ParentTable(){
                 swal("The row of information is safe!")
             }
         });
-
+        //checking to see if I made it to the function
         console.log('In removeBtn');
    }
-
-   const [buttonStatus, setButtonStatus] = useState(true)
-   const changeColor = () => {
-        setButtonStatus(!buttonStatus);
-        console.log('buttonStatus of checkbox is', buttonStatus);
-   }
-
+   
     return(
         <>
         <div className='medTable'>
             <TableContainer component={Paper}>
             <Table>
                 {
+                    /* checking what the button status is */
                     btnStatus ?
                     <>
+                    {/* if the button status is true appending the edit view on the DOM */}
                     <TableHead>
                         <TableRow>
                             <TableCell>Medication</TableCell>
@@ -142,7 +140,7 @@ function ParentTable(){
                     </>
                         
                     :
-
+                    /* if the button status is false, appending the table on the DOM */
                     <>
                     <TableHead>
                         <TableRow>
@@ -157,7 +155,7 @@ function ParentTable(){
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                    
+                    {/* mapping / looping through the data pulled from the store and appending it in the table */}
                     {data.map(item => (
                         <TableRow key={item.id} id={item.id}>
                             <TableCell><input
@@ -173,7 +171,7 @@ function ParentTable(){
                             <TableCell align="right">{item.how_often}</TableCell>
                             
                                     
-                            
+                            {/* this appends only if the user auth_level is Parent */}
                             {user.auth_level === 'Parent' ?
                                 <>
                                 <TableCell align="right"><button className="btn" onClick={event => handleBtn(item)}>Edit</button></TableCell>

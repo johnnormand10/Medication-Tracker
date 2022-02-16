@@ -66,7 +66,7 @@ Components [ ]
     [π] LOGOUT BUTTON WORKS ON ALL PAGES
         [π] brings the user to the login page  
         --
-    [ ] STYLING
-        [ ] change styling of all pages 
+    [π] STYLING
+        [π] change styling of all pages 
         --
     [ ] REAL TIME NOTIFICATIONS

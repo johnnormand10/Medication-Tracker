@@ -3,14 +3,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 
 
-
-
 function ChildInput() {
-
     const history = useHistory();
-
+    //pull the data from the store
     const names = useSelector(store => store.names);
-
+    //local state
     const [childId, setChildId] = useState('');
     const [comment, setComment] = useState('');
     const [dosage, setDosage] = useState('');
@@ -18,16 +15,18 @@ function ChildInput() {
     const [howOften, setHowOften] = useState('');
 
     const dispatch = useDispatch();
-
+    //on load, FETCH_NAME (all the names in the database connected to the user) from the store
     useEffect(() => {
         dispatch({
             type: 'FETCH_NAME'
         })
     }, [])
 
+    // on form submit function
     const submitChild = (event) => {
+        //prevents page refreshing on form completion
         event.preventDefault();
-
+        //sends a request of the payload for a SAGA to catch and execute
         dispatch({
             type: 'CHILD_MEDICATION',
             payload: {
@@ -38,17 +37,17 @@ function ChildInput() {
                 howOften: howOften,
             }
         });
-
+        //clear the local state 
         setComment('');
         setDosage('');
         setMedication('');
         setHowOften('');
     };
-
+    //next page button pressed function
     const nextPage = () => {
         history.push('/api/user/table');
     }
-
+    //previous page button pressed function
     const prevPage = () => {
         history.push('/name');
     }
@@ -61,6 +60,7 @@ function ChildInput() {
             <div>
                 <select name="childNames" onChange={(event) => setChildId(event.target.value)}>
                     <option value="" disabled selected>Child Names</option>
+                    {/* mapping / looping through the names pulled from the store and appending it to the DOM in a dropdown menu */}
                     {names?.map((name) => (
                         <option value={name.id} key={name.id} onChange={(event) => setChildId(event.target.value)}>{name.first_name}</option>
                     ))}

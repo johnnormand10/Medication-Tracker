@@ -6,28 +6,28 @@ import { useHistory } from 'react-router-dom';
 function ChildNameInput(){
 
     const history = useHistory();
-
-    const [childName, setChildName] = useState('');
-
     const dispatch = useDispatch();
-
+    //local state
+    const [childName, setChildName] = useState('');
+    //submit name input function
     const submitName = (event) => {
+        //prevents page refresh
         event.preventDefault();
-
+        //sends a request to SAGA to execute
         dispatch({
             type: 'ADD_CHILD_NAME',
             payload: {
                 childName: childName
             }
         });
-
+        //clear the local state
         setChildName('');
     }
-
+    //next page button pressed function
     const nextPage = () => {
         history.push('/api/user/medication');
     }
-
+    //next previous button pressed function
     const prevPage = () => {
         history.push('/api/user/invite');
     }

@@ -22,7 +22,7 @@ router.post('/', (req, res) => {
     const dosage = req.body.dosage;
     const howOften = req.body.howOften;
 
-
+    /* query used to tell the database what data is added to the database */
     const queryText = `
         INSERT INTO "childMedication"
             ("medication", "comments", "dosage", "how_often", "child_id")

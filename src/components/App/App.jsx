@@ -5,14 +5,11 @@ import {
   Route,
   Switch,
 } from 'react-router-dom';
-
 import { useDispatch, useSelector } from 'react-redux';
-
+/* importing all the components needed for the app */
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
@@ -23,8 +20,7 @@ import Invite from '../Invite/Invite';
 import ChildMedication from '../ChildInput/ChildInput';
 import ParentTable from '../ParentTable/ParentTable';
 import ChildNameInput from '../ChildNameInput/ChildNameInput';
-import EditForm from '../EditForm/EditForm';
-
+/* css file(s) */
 import './App.css';
 
 function App() {
@@ -32,13 +28,12 @@ function App() {
 
   const user = useSelector(store => store.user);
 
+  /* on load FETCH_USER (get the user information) from the user store */
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
 
   return (
-
-
     <Router>
       <div>
         <Nav />
@@ -82,6 +77,7 @@ function App() {
             <UserPage />
           </ProtectedRoute>
 
+{/* logged in shows InfoPage else shows LoginPage */}
           <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
@@ -90,10 +86,7 @@ function App() {
             <InfoPage />
           </ProtectedRoute>
 
-          <Route exact path="/user/:id">
-            <EditForm/>
-          </Route>
-
+{/* If the users auth_level is helper don't allow them to see the invite page */}
           <Route
             exact
             path="/api/user/invite"
@@ -105,6 +98,7 @@ function App() {
             }
           </Route> 
 
+{/* If the users auth_level is helper don't allow them to see the child medication input page */}
           <Route
             exact
             path="/api/user/medication"
@@ -116,6 +110,7 @@ function App() {
             }
           </Route> 
 
+{/* If there is a user logged in, go to the home page otherwise go to the login page */}
           <Route
             exact
             path="/login"
@@ -130,6 +125,7 @@ function App() {
             }
           </Route>
  
+{/* If there is a user logged in, go to the home page otherwise go to the registration page */}
           <Route
             exact
             path="/registration"
@@ -144,6 +140,7 @@ function App() {
             }
           </Route>
 
+{/* if there is a logged in user, allow them to see the invite page if the auth_level is correct */}
           <Route
             exact
             path="/api/user/invite"
@@ -156,6 +153,7 @@ function App() {
           }
           </Route>
 
+{/* if there is a user logged in, allow them to see the landing page */}
           <Route
             exact
             path="/home"
@@ -170,7 +168,7 @@ function App() {
             }
           </Route>
 
-          {/* If none of the other routes matched, we will show a 404. */}
+{/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
           </Route>

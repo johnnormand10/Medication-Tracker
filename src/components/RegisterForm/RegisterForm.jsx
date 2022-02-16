@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 function RegisterForm() {
+  //local state
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
@@ -9,10 +10,11 @@ function RegisterForm() {
   const [familyName, setFamilyName] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
-
+  //register user function
   const registerUser = (event) => {
+    //prevent page refresh
     event.preventDefault();
-
+    //sending a SAGA request to execute
     dispatch({
       type: 'REGISTER',
       payload: {
@@ -30,6 +32,7 @@ function RegisterForm() {
 
     <form className="formPanel" onSubmit={registerUser}>
       <h2>Register Parent</h2>
+      {/* if there is an error, appends the error */}
       {errors.registrationMessage && (
         <h3 className="alert" role="alert">
           {errors.registrationMessage}
