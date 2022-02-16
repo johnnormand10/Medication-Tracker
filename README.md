@@ -51,4 +51,4 @@ Who helped you make this project a reality? Friends? Family? Contributors? Instr
 
 ## Contacts
 
-<a href="https://www.linkedin.com/in/johnathan-normand">
+<a href="https://www.linkedin.com/in/johnathan-normand"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
