@@ -6,14 +6,17 @@ import {useSelector} from 'react-redux';
 import TextField from '@mui/material/TextField';
 
 function LoginForm() {
+  //local state
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
-
+  //login function
   const login = (event) => {
+    //prevents page reload
     event.preventDefault();
-
+    //if there is a username and password, 
+    //then send a request to SAGA to execute
     if (username && password) {
       dispatch({
         type: 'LOGIN',
@@ -22,7 +25,7 @@ function LoginForm() {
           password: password,
         },
       });
-    } else {
+    } else { //send a SAGA to execute an error message
       dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
   }; // end login
@@ -30,6 +33,7 @@ function LoginForm() {
   return (
     <form className="formPanel" onSubmit={login}>
       <h2>Login</h2>
+      {/* if the error SAGA is sent, then show the alert */}
       {errors.loginMessage && (
         <h3 className="alert" role="alert">
           {errors.loginMessage}

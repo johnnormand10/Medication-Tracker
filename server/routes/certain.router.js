@@ -2,10 +2,10 @@ const express = require('express');
 const pool = require('../modules/pool');
 
 const router = express.Router();
-
+/* GET request to get the data from the database */
 router.get('/:id', (req, res) => {
     console.log('in certainRouter');
-
+    /* query used to tell the database what data is requested */
     const queryText = `
     SELECT 
         "child"."id",
@@ -26,12 +26,13 @@ router.get('/:id', (req, res) => {
         AND
         "child"."id" = $2;
     `;
-
+    /* checking what the user id is in the router */
     console.log('user.id in certain.router is:', req.user.id);
+    /* checking what the id of the data is in the router */
     console.log('nameId in certain.router is:', req.params.id);
     
     
-
+    /* setting the user id and child id to a variable to be used later */
     const queryParams = [
         req.user.id,
         req.params.id
@@ -39,6 +40,7 @@ router.get('/:id', (req, res) => {
 
     pool.query(queryText, queryParams)
     .then((result) => {
+        /* sending back the data that was pulled from the database */
         res.send(result.rows);
     })
     .catch((err) => {

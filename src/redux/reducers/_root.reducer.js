@@ -1,11 +1,10 @@
 import { combineReducers } from 'redux';
 import errors from './errors.reducer';
 import user from './user.reducer';
-import childMedication from './childMedication.reducer';
+import childMedication from './childMedication.reducer 2';
 import invite from './invite.reducer';
 import names from './names.reducer';
 import tableReducer from './table.reducer';
-import certainReducer from './certain.reducer';
 import activeEditInfo from './fetchEditInfo.reducer';
 import currentMedication from './currentMedication.reducer';
 
@@ -22,7 +21,6 @@ const rootReducer = combineReducers({
   invite,
   names,
   tableReducer,
-  certainReducer,
   activeEditInfo,
   currentMedication,
 });

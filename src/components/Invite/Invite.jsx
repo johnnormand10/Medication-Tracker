@@ -7,7 +7,8 @@ import './Invite.css';
 function Invite(){
 
     const history = useHistory();
-
+    const dispatch = useDispatch();
+    //local state
     const [inviteUsername, setInviteUsername] = useState('');
     const [invitePassword, setInvitePassword] = useState('');
     const [inviteFirst, setInviteFirstName] = useState('');
@@ -15,12 +16,13 @@ function Invite(){
     const [parentHelper, setInviteParentHelper] = useState('');
 
     const errors = useSelector((store) => store.errors);
-    const dispatch = useDispatch();
-
+    //invite user input function
     const inviteUser = (event) => {
+        //prevents page reload
         event.preventDefault();
+        //making sure I made it to the function
         console.log('submit btn pressed');
-
+        //sending a request to SAGA to execute
         dispatch({
             type: 'INVITE',
             payload: {
@@ -31,25 +33,25 @@ function Invite(){
                 authLevel: parentHelper,
             }
         });
-
+        //clearing local state
         setInviteUsername('');
         setInvitePassword('');
         setInviteFirstName('');
         setInviteLastName('');
         setInviteParentHelper('');
     }; //end inviteUser
-
+    //testing to see if I could get the checkbox to uncheck
     function unCheck() {
         let x = document.getElementsByClassName("checkbox");
         for(i=0; i<x.length; i++){
             x[i].checked = false;
         }
     }
-
+    //next page button pressed function
     const nextPage = () => {
         history.push('/name');
     }
-
+    //previous page button pressed function
     const prevPage = () => {
         history.push('/user');
     }
@@ -58,6 +60,7 @@ function Invite(){
         <>
         <form className="formPanel" onSubmit={inviteUser}>
             <h2>Invite User</h2>
+            {/* if there is an error the alert will be shown */}
             {errors.registrationMessage && (
                 <h3 className="alert" role="alert">
                     {errors.registrationMessage}

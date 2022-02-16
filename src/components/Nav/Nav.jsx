@@ -27,10 +27,11 @@ function Nav() {
         {!user.id && (
           // If there's no user, show login/registration links
           <>
+            {/* links to the register and login page */}
           <Link className="navLink flex" to="/login">
             Login / Register
           </Link>
-
+            {/* link for the about page */}
           <Link className="navLink flex" to="/about">
           About
           </Link>
@@ -39,45 +40,48 @@ function Nav() {
 
 
         {/* if the user has the correct auth_level */}
+        {/* these links only show if the user has the correct auth_level */}
         { user.auth_level === 'Parent' &&
+              /* links to the home page */
           <><Link className='navLink flex' to='/user'>
               Home
             </Link>
-
+              {/* links to the invite page */}
             <Link className='navLink flex' to='/api/user/invite'>
               Invite Others
             </Link>
-
+              {/* links to the child name input page */}
             <Link className='navLink flex' to='/name'>
               Child Name 
             </Link>
-
+              {/* links to the medication input */}
             <Link className='navLink flex' to='/api/user/medication'>
               Add Medication
             </Link>
-
+              {/* links to the table view */}
             <Link className='navLink flex' to='/api/user/table'>
               Table View
             </Link>
-
+              {/* links the button to log the user out */}
             <LogOutButton className='navLink flex' />
             </>
         }
             
         {user.auth_level === 'Helper' && 
           <>
+            {/* shows the link for the home page */}
           <Link className='navLink flex' to='/user'>
             Home 
           </Link>
-
+            {/* links to the table view without the edit and delete buttons */}
           <Link className='navLink flex' to='/api/user/table'>
             Table View
           </Link>
-
+            {/* allows the user to log out  */}
           <LogOutButton className='navLink flex' />
           </>
         }
-
+          {/* always shows the link for the about page */}
         <Link className="navLink flex" to="/about">
           About
         </Link>

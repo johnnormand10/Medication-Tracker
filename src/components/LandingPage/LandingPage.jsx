@@ -6,9 +6,10 @@ import './LandingPage.css';
 import RegisterForm from '../RegisterForm/RegisterForm';
 
 function LandingPage() {
+  //local state
   const [heading, setHeading] = useState('Welcome');
   const history = useHistory();
-
+  //login form submit function
   const onLogin = (event) => {
     history.push('/login');
   };

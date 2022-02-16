@@ -1,10 +1,10 @@
 import React from 'react';
 import './AboutPage.css'
 
-// This is one of our simplest components
-// It doesn't have local state,
-// It doesn't dispatch any redux actions or display any part of redux state
-// or even care what the redux state is'
+/* This page is an info page for the app 
+
+  Shows what technologies that I used and a short description of the app
+*/
 
 function AboutPage() {
   return (

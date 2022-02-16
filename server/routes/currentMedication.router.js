@@ -1,13 +1,11 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-
+/* GET request to get the data from the database */
 router.get('/:id', (req, res) => {
-
+    /* checking what the id is */
     console.log('req.params is', req.params.id);
-    
-
-
+    /* query used to get the data asked for */
     const queryText = `
         SELECT 
             "childMedication"."id",
@@ -18,13 +16,14 @@ router.get('/:id', (req, res) => {
         FROM "childMedication"
         WHERE "id" = $1;
     `;
-
+    /* setting the id to a variable for later use */
     const queryParams = [ 
         req.params.id
     ];
 
     pool.query(queryText, queryParams)
     .then((result) => {
+        /* sending the requested data back */
         res.send(result.rows)
     })
     .catch((err) => {

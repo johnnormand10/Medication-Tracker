@@ -5,11 +5,12 @@ const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
-
+/* GET request */
 router.get('/', (req, res) => {
+        /* checking if I made it to the correct router */
         console.log('in tableRouter');
         
-
+    /* query used to tell the database what data is requested */
     const queryText = `
         SELECT 
             "child"."first_name",
@@ -28,13 +29,14 @@ router.get('/', (req, res) => {
         WHERE 
             "users"."id" = $1;
     `;
-
+    /* setting the user id to a variable for easier use */
     const queryParams = [
         req.user.id
     ];
 
     pool.query(queryText, queryParams)
     .then((result) => {
+        /* sending back the requested data */
         res.send(result.rows);
     })
     .catch((err) => {
@@ -43,17 +45,17 @@ router.get('/', (req, res) => {
     })
 });
 
-
+/* PUT request to the database */
 router.put('/:id', (req, res) => {
+    /* checking to make sure I made it to the correct router */
     console.log('in updateItem.router');
-    
-    
+    /* query used to tell the database what data needs to be changed and where */
     let queryText = `
         UPDATE "childMedication"
         SET "medication" = $1, "comments"=$2, "dosage"=$3, "how_often"=$4
         WHERE id = $5
     `;
-
+    /* setting the updated data to a variable for easier use */
     let queryParams = [
         req.body.medication,
         req.body.comments,
@@ -72,10 +74,11 @@ router.put('/:id', (req, res) => {
     })
 })
 
-
+/* DELETE request to the database */
 router.delete('/:id',  (req, res) => {
+    /* checking what id is being passed to the router */
     console.log('req.params.id in delete', req.params.id);
-
+        /* query used to tell the database what data needs to be removed */
         const queryText = `
             DELETE FROM "childMedication"
             WHERE id = $1
