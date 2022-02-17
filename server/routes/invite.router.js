@@ -3,9 +3,10 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 
+
 const router = express.Router();
 /* POST request to the database */
-router.post('/', (req, res,) => {
+router.post('/', rejectUnauthenticated, (req, res,) => {
     /* setting the data to variables for easier use */
     const username = req.body.username;
     const firstName = req.body.firstName;

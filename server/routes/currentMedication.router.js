@@ -1,8 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 /* GET request to get the data from the database */
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated,(req, res) => {
     /* checking what the id is */
     console.log('req.params is', req.params.id);
     /* query used to get the data asked for */

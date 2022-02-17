@@ -1,3 +1,7 @@
 .MuiPaper-root{
     background-color: black;
 }
+
+TableCell{
+    text-align: center;
+}
