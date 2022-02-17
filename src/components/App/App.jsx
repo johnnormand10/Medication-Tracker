@@ -4,6 +4,7 @@ import {
   Redirect,
   Route,
   Switch,
+  Link,
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 /* importing all the components needed for the app */
