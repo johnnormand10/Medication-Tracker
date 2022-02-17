@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import swal from 'sweetalert';
+import { useHistory } from 'react-router-dom';
 
 //material ui
 import Table from '@mui/material/Table';
@@ -14,7 +15,7 @@ import Paper from '@mui/material/Paper';
 import TextField from '@mui/material/TextField';
 
 function ParentTable(){
-
+    const history = useHistory();
 
     const user = useSelector(store => store.user);
     const data = useSelector(store => store.tableReducer);
@@ -107,6 +108,11 @@ function ParentTable(){
         //checking to see if I made it to the function
         console.log('In removeBtn');
    }
+
+   //previous page button pressed function
+    const prevPage = () => {
+        history.push('/api/user/medication');
+    }
    
     return(
         <>
@@ -189,9 +195,11 @@ function ParentTable(){
             </Table>
             </TableContainer>
         </div>
+        <button className='prevBtn' onClick={prevPage}>PREVIOUS</button>
         </>
     )
 }
 
 export default ParentTable;
+
 
