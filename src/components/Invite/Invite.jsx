@@ -131,7 +131,7 @@ function Invite(){
             </div>
         </form>
         <button className='nextBtn' onClick={nextPage}>NEXT</button>
-        <button className='prevBtn' onClick={prevPage}>PREVIOUS</button>
+        {/* <button className='prevBtn' onClick={prevPage}>PREVIOUS</button> */}
         </>
     )
 }

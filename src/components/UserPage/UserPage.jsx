@@ -1,5 +1,6 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
+import Invite from '../Invite/Invite';
 import {useSelector} from 'react-redux';
 import './UserPage.css';
 
@@ -9,7 +10,8 @@ function UserPage() {
   return (
     <div className="container">
       <h2>Welcome, { user.username}!</h2>
-      <LogOutButton className="btn" />
+      <Invite />
+      {/* <LogOutButton className="btn" /> */}
     </div>
   );
 }
