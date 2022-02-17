@@ -70,6 +70,7 @@ function Invite(){
                 <label htmlFor="username">
                     Username:
                     <input 
+                        className= "input"
                         type="text"
                         name="username"
                         value={inviteUsername}
@@ -82,6 +83,7 @@ function Invite(){
                 <label htmlFor="firstName">
                     First Name:
                     <input
+                        className= "input"
                         type="text"
                         name="firstName"
                         value={inviteFirst}
@@ -106,6 +108,7 @@ function Invite(){
                 <label htmlFor="password">
                     Password:
                     <input
+                        className= "input"
                         type="password"
                         name="password"
                         value={invitePassword}
@@ -116,6 +119,7 @@ function Invite(){
             </div>
             <div>
                 <input
+                    className= "input"
                     type="checkbox"
                     className="checkbox"
                     name="Helper"

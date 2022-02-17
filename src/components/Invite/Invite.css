@@ -1,3 +1,7 @@
+h2{
+    text-align: center;
+}
+
 .nextBtn{
     position: absolute;
     right: 10px;
@@ -99,4 +103,8 @@
     background-color: transparent;
     border-color: rgb(0, 0, 252);
     color: rgb(0, 0, 252);
+}
+
+.input{
+    text-align: right;
 }

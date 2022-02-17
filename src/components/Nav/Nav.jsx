@@ -43,11 +43,7 @@ function Nav() {
         {/* these links only show if the user has the correct auth_level */}
         { user.auth_level === 'Parent' &&
               /* links to the home page */
-          <>{/* <Link className='navLink flex' to='/user'>
-              Home
-            </Link> */}
-              {/* links to the invite page */}
-            <Link className='navLink flex' to='/api/user/invite'>
+          <><Link className='navLink flex' to='/user'>
               Home
             </Link>
               {/* links to the child name input page */}
@@ -70,13 +66,6 @@ function Nav() {
         {user.auth_level === 'Helper' && 
           <>
             {/* shows the link for the home page */}
-          <Link className='navLink flex' to='/user'>
-            Home 
-          </Link>
-            {/* links to the table view without the edit and delete buttons */}
-          <Link className='navLink flex' to='/api/user/table'>
-            Table View
-          </Link>
             {/* allows the user to log out  */}
           <LogOutButton className='navLink flex' />
           </>
