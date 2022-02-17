@@ -21,7 +21,7 @@ function ChildInput() {
             type: 'FETCH_NAME'
         })
     }, [])
-
+ 
     // on form submit function
     const submitChild = (event) => {
         //prevents page refreshing on form completion

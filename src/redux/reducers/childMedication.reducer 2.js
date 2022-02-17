@@ -6,6 +6,6 @@ const childMedication = (state = [], action) => {
             return action.payload;
         default:
             return state;
-    }
+    } 
 }
 export default childMedication;

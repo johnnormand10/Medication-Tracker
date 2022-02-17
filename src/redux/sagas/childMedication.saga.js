@@ -18,7 +18,7 @@ function* setChildMedication(action){
         console.error('ERROR in posting child and medication data');
     }
 }
-
+ 
 /* generator function */
 function* childMedicationSaga() {
     /* SAGA is watching for the type (CHILD_MEDICATION) */
