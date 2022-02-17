@@ -97,12 +97,13 @@ Form Treatment
 -------------------------------------------------------------------------------- */
 
 .formPanel {
+  align-content: center;
   box-sizing: border-box;
   width: 400px;
   max-width: 100%;
   padding: 25px;
   margin: 0 auto 20px;
-  margin-top: 2rem;
+  margin-top: 5rem;
   background-color: #efefef;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgb(0, 0, 0, 0.4);
