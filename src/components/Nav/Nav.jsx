@@ -43,12 +43,12 @@ function Nav() {
         {/* these links only show if the user has the correct auth_level */}
         { user.auth_level === 'Parent' &&
               /* links to the home page */
-          <><Link className='navLink flex' to='/user'>
+          <>{/* <Link className='navLink flex' to='/user'>
               Home
-            </Link>
+            </Link> */}
               {/* links to the invite page */}
             <Link className='navLink flex' to='/api/user/invite'>
-              Invite Others
+              Home
             </Link>
               {/* links to the child name input page */}
             <Link className='navLink flex' to='/name'>
