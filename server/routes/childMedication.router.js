@@ -15,7 +15,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
  
 
 // Handles POST request with new user data
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     const childId = req.body.childId;
     const medication = req.body.medication;
     const comment = req.body.comment;

@@ -1,9 +1,11 @@
 const express = require('express');
 const pool = require('../modules/pool');
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 
 const router = express.Router();
 /* POST request to the database */
-router.post('/', (req, res) => {
+router.post('/', rejectUnauthenticated, (req, res) => {
     /* checking if I made it into the correct router */
     console.log('in childName.router');
     /* setting the child name to a variable for use later*/

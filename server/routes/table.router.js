@@ -6,7 +6,7 @@ const userStrategy = require('../strategies/user.strategy');
 
 const router = express.Router();
 /* GET request */
-router.get('/', (req, res) => {
+router.get('/', rejectUnauthenticated, (req, res) => {
         /* checking if I made it to the correct router */
         console.log('in tableRouter');
         
@@ -46,7 +46,7 @@ router.get('/', (req, res) => {
 });
 
 /* PUT request to the database */
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
     /* checking to make sure I made it to the correct router */
     console.log('in updateItem.router');
     /* query used to tell the database what data needs to be changed and where */
@@ -75,7 +75,7 @@ router.put('/:id', (req, res) => {
 })
 
 /* DELETE request to the database */
-router.delete('/:id',  (req, res) => {
+router.delete('/:id',  rejectUnauthenticated, (req, res) => {
     /* checking what id is being passed to the router */
     console.log('req.params.id in delete', req.params.id);
         /* query used to tell the database what data needs to be removed */

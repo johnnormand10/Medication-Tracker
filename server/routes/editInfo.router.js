@@ -1,8 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
+const { rejectUnauthenticated } = require('../modules/authentication-middleware');
+
 /* PUT request to the database */
-router.put('/:id', (req, res) => {
+router.put('/:id', rejectUnauthenticated, (req, res) => {
 	/* query used to tell the database what data is being updated and where  */
 	const queryText = `
         UPDATE "childMedication"
