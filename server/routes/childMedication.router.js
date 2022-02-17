@@ -12,7 +12,7 @@ router.get('/', rejectUnauthenticated, (req, res) => {
 });
 
 
-
+ 
 
 // Handles POST request with new user data
 router.post('/', (req, res) => {
