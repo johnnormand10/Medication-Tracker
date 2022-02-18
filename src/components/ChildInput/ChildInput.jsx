@@ -56,7 +56,7 @@ function ChildInput() {
     return(
         <>
         <form className="formPanel" onSubmit={submitChild}>
-            <h2>TBD</h2>
+            <h2>Add Medication</h2>
             <div>
                 <select name="childNames" onChange={(event) => setChildId(event.target.value)}>
                     <option value="" disabled selected>Child Names</option>
