@@ -127,18 +127,18 @@ function ParentTable(){
                     <TableHead>
                         <TableRow>
                             <TableCell>Medication</TableCell>
-                            <TableCell align="right">Comments/Instructions</TableCell>
-                            <TableCell align="right">Dosage</TableCell>
-                            <TableCell align="right">How Often</TableCell>
-                            <TableCell align="right"></TableCell>
+                            <TableCell align="right" className='tableRow'>Comments/Instructions</TableCell>
+                            <TableCell align="right" className='tableRow'>Dosage</TableCell>
+                            <TableCell align="right" className='tableRow'>How Often</TableCell>
+                            <TableCell align="right" className='tableRow'></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         <TableRow key={newId}>
-                            <TableCell><TextField id="outlined-basic" size="small" value={newMedication} onChange={(event) => setNewMedication(event.target.value)}/></TableCell>
-                            <TableCell align="right"><TextField id="outlined-basic" size="small" value={newComment} onChange={(event) => setNewComment(event.target.value)}/></TableCell>
-                            <TableCell align="right"><TextField id="outlined-basic" size="small" value={newDosage} onChange={(event) => setNewDosage(event.target.value)}/></TableCell>
-                            <TableCell align="right"><TextField id="outlined-basic" size="small" value={newHowOften} onChange={(event) => setNewHowOften(event.target.value)}/></TableCell>
+                            <TableCell className='tableCell'><TextField id="outlined-basic" size="small" value={newMedication} onChange={(event) => setNewMedication(event.target.value)}/></TableCell>
+                            <TableCell align="right" className='tableCell'><TextField id="outlined-basic" size="small" value={newComment} onChange={(event) => setNewComment(event.target.value)}/></TableCell>
+                            <TableCell align="right" className='tableCell'><TextField id="outlined-basic" size="small" value={newDosage} onChange={(event) => setNewDosage(event.target.value)}/></TableCell>
+                            <TableCell align="right" className='tableCell'><TextField id="outlined-basic" size="small" value={newHowOften} onChange={(event) => setNewHowOften(event.target.value)}/></TableCell>
                             <TableCell align="right"><button className="btn" onClick={handleSave}>Save Changes</button></TableCell>
                             <TableCell align="right"><button className="btn" onClick={cancelBtn}>Cancel Changes</button></TableCell>
                         </TableRow>
@@ -151,11 +151,11 @@ function ParentTable(){
                     <TableHead>
                         <TableRow>
                             <TableCell>  ☑️ </TableCell>
-                            <TableCell align="right">Child Name</TableCell>
-                            <TableCell align="right">Medication</TableCell>
-                            <TableCell align="right">Comments/Instructions</TableCell>
-                            <TableCell align="right">Dosage</TableCell>
-                            <TableCell align="right">How Often</TableCell>
+                            <TableCell align="right" className='tableCell'>Child Name</TableCell>
+                            <TableCell align="right" className='tableCell'>Medication</TableCell>
+                            <TableCell align="right" className='tableCell'>Comments/Instructions</TableCell>
+                            <TableCell align="right" className='tableCell'>Dosage</TableCell>
+                            <TableCell align="right" className='tableCell'>How Often</TableCell>
                             <TableCell align="right"></TableCell>
                             <TableCell align="right"></TableCell>
                         </TableRow>
