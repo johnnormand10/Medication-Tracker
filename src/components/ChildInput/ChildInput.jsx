@@ -52,12 +52,19 @@ function ChildInput() {
         history.push('/name');
     }
 
+    const demoData = () => {
+        setMedication('Acetaminophen');
+        setComment('Use for aches and pains');
+        setDosage('325mg');
+        setHowOften('When needed');
+    }
+
 
     return(
         <>
         <form className="formPanel" onSubmit={submitChild}>
-            <h2>Add Medication</h2>
-            <div>
+            <h2 onClick={demoData}>Add Medication</h2>
+            <div className='inputDiv'>
                 <select name="childNames" onChange={(event) => setChildId(event.target.value)}>
                     <option value="" disabled selected>Child Names</option>
                     {/* mapping / looping through the names pulled from the store and appending it to the DOM in a dropdown menu */}
@@ -66,7 +73,7 @@ function ChildInput() {
                     ))}
                 </select>
             </div>
-            <div>
+            <div className='inputDiv'>
                 <label htmlFor="medication">
                     Medication Name:
                     <input 
@@ -78,7 +85,7 @@ function ChildInput() {
                     />
                 </label>
             </div>
-            <div>
+            <div className='inputDiv'>
                 <label htmlFor="comment">
                     Comments/Instructions:
                     <input
@@ -89,7 +96,7 @@ function ChildInput() {
                     />
                 </label>
             </div>
-            <div>
+            <div className='inputDiv'>
                 <label htmlFor="dosage">
                     Dosage:
                     <input
@@ -101,7 +108,7 @@ function ChildInput() {
                     />
                 </label>
             </div>
-            <div>
+            <div className='inputDiv'>
                 <label htmlFor="howOften">
                     How Often:
                     <input

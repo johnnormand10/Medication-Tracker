@@ -56,10 +56,17 @@ function Invite(){
         history.push('/user');
     }
 
+    const demoData = () => {
+        setInviteUsername('GmaSchemenauer');
+        setInvitePassword('schemenauer');
+        setInviteFirstName('Grandma');
+        setInviteLastName('Schemenauer');
+    }
+
     return(
         <>
         <form className="formPanel" onSubmit={inviteUser}>
-            <h2>Invite User</h2>
+            <h2 onClick={demoData}>Invite User</h2>
             {/* if there is an error the alert will be shown */}
             {errors.registrationMessage && (
                 <h3 className="alert" role="alert">

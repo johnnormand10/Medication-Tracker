@@ -31,11 +31,15 @@ function ChildNameInput(){
     const prevPage = () => {
         history.push('/api/user/invite');
     }
+    
+    const demoData = () => {
+        setChildName('Matthew');
+    }
 
     return (
         <>
         <form className="formPanel" onSubmit={submitName}>
-            <h2>Child Name</h2>
+            <h2 onClick={demoData}>Child Name</h2>
             <div>
                 <label htmlFor="childName">
                     Name:
